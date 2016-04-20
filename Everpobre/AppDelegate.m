@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "AGTCoreDataStack.h"
 
 @interface AppDelegate ()
 
@@ -16,6 +17,13 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    // Create a CoreDataStack intance with Model.sqlite saved to Documents folder
+    self.model = [AGTCoreDataStack coreDataStackWithModelName:@"Model"];
+    
+    [self playWithData];
+    
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
@@ -43,6 +51,23 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+
+
+#pragma mark - Utils
+
+- (void)playWithData{
+    
+    // Create a note
+    NSManagedObject *note = [NSEntityDescription insertNewObjectForEntityForName:@"Note"
+                                                          inManagedObjectContext:self.model.context];
+    
+    // Set values for properties via KVC
+    [note setValue:@"WWWC" forKey:@"name"];
+    [note setValue:[NSDate date] forKey:@"creationDate"];
+    
+    NSLog(@"The name of the note is %@", [note valueForKey:@"name"]);
 }
 
 @end
