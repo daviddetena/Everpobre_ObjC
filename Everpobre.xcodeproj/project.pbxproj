@@ -11,6 +11,7 @@
 		5924566D1CC76C4C00C5450B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5924566C1CC76C4C00C5450B /* AppDelegate.m */; };
 		5924566F1CC76C4C00C5450B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5924566E1CC76C4C00C5450B /* Assets.xcassets */; };
 		592456721CC76C4C00C5450B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 592456701CC76C4C00C5450B /* LaunchScreen.storyboard */; };
+		5924567C1CC77B4E00C5450B /* AGTCoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 5924567B1CC77B4E00C5450B /* AGTCoreDataStack.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,8 @@
 		5924566E1CC76C4C00C5450B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		592456711CC76C4C00C5450B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		592456731CC76C4C00C5450B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5924567A1CC77B4E00C5450B /* AGTCoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGTCoreDataStack.h; sourceTree = "<group>"; };
+		5924567B1CC77B4E00C5450B /* AGTCoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGTCoreDataStack.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +56,7 @@
 		592456671CC76C4C00C5450B /* Everpobre */ = {
 			isa = PBXGroup;
 			children = (
+				592456791CC7769200C5450B /* Models */,
 				5924566B1CC76C4C00C5450B /* AppDelegate.h */,
 				5924566C1CC76C4C00C5450B /* AppDelegate.m */,
 				5924566E1CC76C4C00C5450B /* Assets.xcassets */,
@@ -69,6 +73,15 @@
 				592456691CC76C4C00C5450B /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		592456791CC7769200C5450B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5924567A1CC77B4E00C5450B /* AGTCoreDataStack.h */,
+				5924567B1CC77B4E00C5450B /* AGTCoreDataStack.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -102,6 +115,7 @@
 				TargetAttributes = {
 					592456641CC76C4C00C5450B = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = QF5L9JVR92;
 					};
 				};
 			};
@@ -140,6 +154,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5924567C1CC77B4E00C5450B /* AGTCoreDataStack.m in Sources */,
 				5924566D1CC76C4C00C5450B /* AppDelegate.m in Sources */,
 				5924566A1CC76C4C00C5450B /* main.m in Sources */,
 			);
@@ -245,6 +260,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Everpobre/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.daviddetena.Everpobre;
@@ -256,6 +272,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Everpobre/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.daviddetena.Everpobre;
