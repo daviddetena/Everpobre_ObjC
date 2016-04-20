@@ -12,6 +12,7 @@
 		5924566F1CC76C4C00C5450B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5924566E1CC76C4C00C5450B /* Assets.xcassets */; };
 		592456721CC76C4C00C5450B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 592456701CC76C4C00C5450B /* LaunchScreen.storyboard */; };
 		5924567C1CC77B4E00C5450B /* AGTCoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 5924567B1CC77B4E00C5450B /* AGTCoreDataStack.m */; };
+		5924567F1CC77F0C00C5450B /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5924567D1CC77F0C00C5450B /* Model.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		592456731CC76C4C00C5450B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5924567A1CC77B4E00C5450B /* AGTCoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGTCoreDataStack.h; sourceTree = "<group>"; };
 		5924567B1CC77B4E00C5450B /* AGTCoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGTCoreDataStack.m; sourceTree = "<group>"; };
+		5924567E1CC77F0C00C5450B /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 		592456791CC7769200C5450B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5924567D1CC77F0C00C5450B /* Model.xcdatamodeld */,
 				5924567A1CC77B4E00C5450B /* AGTCoreDataStack.h */,
 				5924567B1CC77B4E00C5450B /* AGTCoreDataStack.m */,
 			);
@@ -157,6 +160,7 @@
 				5924567C1CC77B4E00C5450B /* AGTCoreDataStack.m in Sources */,
 				5924566D1CC76C4C00C5450B /* AppDelegate.m in Sources */,
 				5924566A1CC76C4C00C5450B /* main.m in Sources */,
+				5924567F1CC77F0C00C5450B /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +305,20 @@
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5924567D1CC77F0C00C5450B /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5924567E1CC77F0C00C5450B /* Model.xcdatamodel */,
+			);
+			currentVersion = 5924567E1CC77F0C00C5450B /* Model.xcdatamodel */;
+			name = Model.xcdatamodeld;
+			path = ../Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5924565D1CC76C4C00C5450B /* Project object */;
 }
