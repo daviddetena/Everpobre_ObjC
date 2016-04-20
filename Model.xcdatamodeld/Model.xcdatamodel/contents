@@ -7,11 +7,14 @@
     </entity>
     <entity name="Note" parentEntity="NamedEntity" syncable="YES">
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="notebook" maxCount="1" deletionRule="Nullify" destinationEntity="Notebook" inverseName="notes" inverseEntity="Notebook" syncable="YES"/>
     </entity>
-    <entity name="Notebook" parentEntity="NamedEntity" syncable="YES"/>
+    <entity name="Notebook" parentEntity="NamedEntity" syncable="YES">
+        <relationship name="notes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Note" inverseName="notebook" inverseEntity="Note" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Notebook" positionX="16" positionY="-99" width="128" height="45"/>
-        <element name="Note" positionX="-236" positionY="-51" width="128" height="60"/>
+        <element name="Notebook" positionX="16" positionY="-99" width="128" height="58"/>
+        <element name="Note" positionX="-236" positionY="-51" width="128" height="73"/>
         <element name="NamedEntity" positionX="18" positionY="99" width="128" height="88"/>
     </elements>
 </model>
