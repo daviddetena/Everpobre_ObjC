@@ -14,6 +14,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @class Notebook;
+@class Photo;
 
 @interface NoteID : NamedEntityID {}
 @end
@@ -28,6 +29,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) Notebook *notebook;
 
+@property (nonatomic, strong, nullable) Photo *photo;
+
 @end
 
 @interface _Note (CoreDataGeneratedPrimitiveAccessors)
@@ -38,6 +41,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (Notebook*)primitiveNotebook;
 - (void)setPrimitiveNotebook:(Notebook*)value;
 
+- (Photo*)primitivePhoto;
+- (void)setPrimitivePhoto:(Photo*)value;
+
 @end
 
 @interface NoteAttributes: NSObject 
@@ -46,6 +52,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NoteRelationships: NSObject
 + (NSString *)notebook;
++ (NSString *)photo;
 @end
 
 NS_ASSUME_NONNULL_END
