@@ -10,6 +10,7 @@
 #import "AGTCoreDataStack.h"
 #import "Note.h"
 #import "Notebook.h"
+#import "Settings.h"
 
 @interface AppDelegate ()
 
@@ -114,12 +115,15 @@
     }];
 }
 
+// Autosaving with a delay defined in Settings
 - (void)autoSave{
-    NSLog(@"Saving automatically...");
-    [self save];
-    
-    // Recursive call with a delay
-    [self performSelector:@selector(autoSave) withObject:nil afterDelay:2];
+    if(AUTO_SAVE){
+        NSLog(@"Saving automatically...");
+        [self save];
+        
+        // Recursive call with a delay
+        [self performSelector:@selector(autoSave) withObject:nil afterDelay:AUTO_SAVE_DELAY_IN_SECONDS];
+    }
 }
 
 @end
