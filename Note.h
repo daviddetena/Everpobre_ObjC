@@ -1,5 +1,11 @@
 #import "_Note.h"
 
 @interface Note : _Note
-// Custom logic goes here.
+
+#pragma mark - Class methods
++(instancetype) noteWithName:(NSString *) name
+                    notebook:(Notebook *) notebook
+                     context:(NSManagedObjectContext *) context;
+
+
 @end
