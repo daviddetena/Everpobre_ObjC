@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "AGTCoreDataStack.h"
+#import "Note.h"
+#import "Notebook.h"
 
 @interface AppDelegate ()
 
@@ -34,11 +36,17 @@
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    
+    // A good moment to save is when just stop receiving user touches
+    [self save];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
+    // A good moment to save is when just entered background
+    [self save];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -51,6 +59,8 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    
+    NSLog(@"Good bye, cruel world!");
 }
 
 
@@ -59,15 +69,33 @@
 
 - (void)playWithData{
     
-    // Create a note
-    NSManagedObject *note = [NSEntityDescription insertNewObjectForEntityForName:@"Note"
-                                                          inManagedObjectContext:self.model.context];
+    // Create a notebook
+    Notebook *notebook = [Notebook notebookWithName:@"GOTY games"
+                                            context:self.model.context];
     
-    // Set values for properties via KVC
-    [note setValue:@"WWWC" forKey:@"name"];
-    [note setValue:[NSDate date] forKey:@"creationDate"];
+    [Note noteWithName:@"The Last Of Us Remastered"
+              notebook:notebook
+               context:self.model.context];
     
-    NSLog(@"The name of the note is %@", [note valueForKey:@"name"]);
+    [Note noteWithName:@"Uncharted 4"
+              notebook:notebook
+               context:self.model.context];
+    
+    
+    
+    
+    
+    // Save
+    [self save];
+}
+
+
+// Save to disk
+- (void)save{
+    
+    [self.model saveWithErrorBlock:^(NSError *error) {
+        NSLog(@"Error when saving to disk: %s \n\n %@", __func__, error);
+    }];
 }
 
 @end
