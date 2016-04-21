@@ -38,6 +38,7 @@
 		599230311CC93DC400568E9F /* _Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Photo.m; sourceTree = SOURCE_ROOT; };
 		599230331CC93DD000568E9F /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = SOURCE_ROOT; };
 		599230341CC93DD000568E9F /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = SOURCE_ROOT; };
+		599230361CC95A2B00568E9F /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
 		59B964601CC841CA00F4F700 /* _NamedEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _NamedEntity.h; sourceTree = SOURCE_ROOT; };
 		59B964611CC841CA00F4F700 /* _NamedEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _NamedEntity.m; sourceTree = SOURCE_ROOT; };
 		59B964621CC841CA00F4F700 /* _Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Note.h; sourceTree = SOURCE_ROOT; };
@@ -89,6 +90,7 @@
 				592456701CC76C4C00C5450B /* LaunchScreen.storyboard */,
 				592456731CC76C4C00C5450B /* Info.plist */,
 				592456681CC76C4C00C5450B /* Supporting Files */,
+				599230361CC95A2B00568E9F /* Settings.h */,
 			);
 			path = Everpobre;
 			sourceTree = "<group>";
