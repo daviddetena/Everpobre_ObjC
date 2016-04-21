@@ -8,19 +8,19 @@
     <entity name="Note" representedClassName="Note" parentEntity="NamedEntity" syncable="YES">
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="notebook" maxCount="1" deletionRule="Nullify" destinationEntity="Notebook" inverseName="notes" inverseEntity="Notebook" syncable="YES"/>
-        <relationship name="photo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Photo" inverseName="notes" inverseEntity="Photo" syncable="YES"/>
+        <relationship name="photo" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Photo" inverseName="notes" inverseEntity="Photo" syncable="YES"/>
     </entity>
     <entity name="Notebook" representedClassName="Notebook" parentEntity="NamedEntity" syncable="YES">
         <relationship name="notes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Note" inverseName="notebook" inverseEntity="Note" syncable="YES"/>
     </entity>
     <entity name="Photo" representedClassName="Photo" syncable="YES">
         <attribute name="imageData" attributeType="Binary" syncable="YES"/>
-        <relationship name="notes" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="photo" inverseEntity="Note" syncable="YES"/>
+        <relationship name="notes" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="photo" inverseEntity="Note" syncable="YES"/>
     </entity>
     <elements>
         <element name="NamedEntity" positionX="-243" positionY="-117" width="128" height="88"/>
         <element name="Note" positionX="-389" positionY="71" width="128" height="88"/>
         <element name="Notebook" positionX="-74" positionY="86" width="128" height="58"/>
-        <element name="Photo" positionX="-234" positionY="0" width="128" height="73"/>
+        <element name="Photo" positionX="-227" positionY="171" width="128" height="73"/>
     </elements>
 </model>

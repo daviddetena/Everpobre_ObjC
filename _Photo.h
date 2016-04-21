@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSData* imageData;
 
-@property (nonatomic, strong, nullable) Note *notes;
+@property (nonatomic, strong) Note *notes;
 
 @end
 
