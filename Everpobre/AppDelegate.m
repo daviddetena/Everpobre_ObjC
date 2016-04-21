@@ -24,7 +24,7 @@
     self.model = [AGTCoreDataStack coreDataStackWithModelName:@"Model"];
     
     [self playWithData];
-    
+    [self autoSave];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
@@ -74,16 +74,32 @@
                                             context:self.model.context];
     
     [Note noteWithName:@"The Last Of Us Remastered"
-              notebook:notebook
-               context:self.model.context];
+                            notebook:notebook
+                             context:self.model.context];
     
     [Note noteWithName:@"Uncharted 4"
-              notebook:notebook
-               context:self.model.context];
+                            notebook:notebook
+                             context:self.model.context];
     
+    // Search
+    // NSFetchRequest. Search Notes
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:[Note entityName]];
     
+    // Sorting by name ASC, modificationDate DESC
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:NamedEntityAttributes.name
+                                                              ascending:YES],
+                                [NSSortDescriptor sortDescriptorWithKey:NamedEntityAttributes.modificationDate
+                                                              ascending:NO]];
     
+    NSError *error;
+    NSArray *results = [self.model.context executeFetchRequest:request error:&error];
     
+    if(results == nil){
+        NSLog(@"Error when saving: %@", error);
+    }
+    else{
+        NSLog(@"Found %lu item(s)", (unsigned long)[results count]);
+    }
     
     // Save
     [self save];
@@ -96,6 +112,14 @@
     [self.model saveWithErrorBlock:^(NSError *error) {
         NSLog(@"Error when saving to disk: %s \n\n %@", __func__, error);
     }];
+}
+
+- (void)autoSave{
+    NSLog(@"Saving automatically...");
+    [self save];
+    
+    // Recursive call with a delay
+    [self performSelector:@selector(autoSave) withObject:nil afterDelay:2];
 }
 
 @end
