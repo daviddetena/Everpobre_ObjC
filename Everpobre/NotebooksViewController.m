@@ -79,10 +79,8 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
                                                                                target:self
                                                                                action:@selector(addNotebook:)];
     
-    UIBarButtonItem *testButton = [[UIBarButtonItem alloc] initWithTitle:@"Test" style:UIBarButtonItemStylePlain target:self action:@selector(presentAlertController:)];
-    
     // Add button to navigation bar
-    self.navigationItem.rightBarButtonItems = @[addButton, testButton];
+    self.navigationItem.rightBarButtonItem = addButton;
     
     // Add Editing button on the left
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
@@ -95,34 +93,5 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
     // Create a new Notebook instance and TableView will be refreshed automatically (see AGTCoreDataTableViewController)
     [Notebook notebookWithName:@"New Notebook" context:self.fetchedResultsController.managedObjectContext];
 }
-
-
-- (void) presentAlertController:(id) sender{
-    // Display UIAlertControllers with 3 actions: undo (if possible), redo (if possible) and cancel
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Undo/Redo" message:@"What do you want to do?" preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction *actionUndo = [UIAlertAction actionWithTitle:@"Undo" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-        NSLog(@"pressed undo");
-    }];
-    
-    
-    UIAlertAction *actionRedo = [UIAlertAction actionWithTitle:@"Redo" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-        NSLog(@"pressed redo");
-    }];
-    
-    UIAlertAction *actionCancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        NSLog(@"pressed cancel");
-    }];
-    
-    
-    // Add Cancel Action and present UIAlertController
-    [alert addAction:actionUndo];
-    [alert addAction:actionRedo];
-    [alert addAction:actionCancel];
-    
-    //[self.fetchedResultsController.managedObjectContext.undoManager undo];
-    [self presentViewController:alert animated:YES completion:nil];
-}
-
 
 @end
