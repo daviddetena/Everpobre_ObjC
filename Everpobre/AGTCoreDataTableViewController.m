@@ -185,31 +185,35 @@
     
     // Shake gesture performed
     if(motion == UIEventSubtypeMotionShake){
-        
-        // Display UIAlertControllers with 3 actions: undo (if possible), redo (if possible) and cancel
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Shake gesture recognized" message:@"What do you want to do?" preferredStyle:UIAlertControllerStyleAlert];
-        
-        
-        if([self.fetchedResultsController.managedObjectContext.undoManager canUndo]){
-            UIAlertAction *actionUndo = [UIAlertAction actionWithTitle:@"Undo" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-                [self.fetchedResultsController.managedObjectContext.undoManager undo];
-            }];
-            [alert addAction:actionUndo];
-        }
-        
-        if([self.fetchedResultsController.managedObjectContext.undoManager canRedo]){
-            UIAlertAction *actionRedo = [UIAlertAction actionWithTitle:@"Redo" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-                [self.fetchedResultsController.managedObjectContext.undoManager redo];
-            }];
-            [alert addAction:actionRedo];
-        }
-        
-        // Add Cancel Action and present UIAlertController
-        UIAlertAction *actionCancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        }];
-        [alert addAction:actionCancel];
-        [self presentViewController:alert animated:YES completion:nil];
+        [self presentUndoRedoAlertController];
     }
+}
+
+
+- (void) presentUndoRedoAlertController{
+    // Display UIAlertControllers with 3 actions: undo (if possible), redo (if possible) and cancel
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Shake gesture recognized" message:@"What do you want to do?" preferredStyle:UIAlertControllerStyleAlert];
+    
+    
+    if([self.fetchedResultsController.managedObjectContext.undoManager canUndo]){
+        UIAlertAction *actionUndo = [UIAlertAction actionWithTitle:@"Undo" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            [self.fetchedResultsController.managedObjectContext.undoManager undo];
+        }];
+        [alert addAction:actionUndo];
+    }
+    
+    if([self.fetchedResultsController.managedObjectContext.undoManager canRedo]){
+        UIAlertAction *actionRedo = [UIAlertAction actionWithTitle:@"Redo" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            [self.fetchedResultsController.managedObjectContext.undoManager redo];
+        }];
+        [alert addAction:actionRedo];
+    }
+    
+    // Add Cancel Action and present UIAlertController
+    UIAlertAction *actionCancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [alert addAction:actionCancel];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 

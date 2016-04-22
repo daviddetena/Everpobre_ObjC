@@ -60,5 +60,7 @@
 -(id) initWithFetchedResultsController: (NSFetchedResultsController *) aFetchedResultsController
                                  style: (UITableViewStyle) aStyle;
 
-
+// NEW (@Since 22/04/16)
+// This method is used to present an UIAlertController with these options: undo, redo (if available) and cancel
+- (void) presentUndoRedoAlertController;
 @end
