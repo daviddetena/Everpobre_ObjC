@@ -71,7 +71,7 @@
 
 // Tear down KVO when turning into fault
 - (void) willTurnIntoFault{
-    [self willTurnIntoFault];
+    [super willTurnIntoFault];
     [self tearDownKVO];
 }
 
