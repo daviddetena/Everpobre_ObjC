@@ -12,6 +12,7 @@
 #import "Notebook.h"
 #import "Settings.h"
 #import "NotebooksViewController.h"
+#import "UIViewController+Navigation.h"
 
 @interface AppDelegate ()
 
@@ -44,9 +45,8 @@
     NotebooksViewController *nbVC = [[NotebooksViewController alloc] initWithFetchedResultsController:results
                                                                                                 style:UITableViewStylePlain];
     
-    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:nbVC];
-    self.window.rootViewController = navVC;
-    
+    // Call a method defined in our custom category
+    self.window.rootViewController = [nbVC wrappedInNavigation];
     
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];

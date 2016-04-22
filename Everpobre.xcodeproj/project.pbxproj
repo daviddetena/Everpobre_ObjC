@@ -17,6 +17,7 @@
 		599230351CC93DD000568E9F /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 599230341CC93DD000568E9F /* Photo.m */; };
 		59AFE47B1CCA1998001E7782 /* AGTCoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AFE47A1CCA1998001E7782 /* AGTCoreDataTableViewController.m */; };
 		59AFE47E1CCA1A4F001E7782 /* NotebooksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AFE47D1CCA1A4F001E7782 /* NotebooksViewController.m */; };
+		59AFE4821CCA4198001E7782 /* UIViewController+Navigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AFE4811CCA4198001E7782 /* UIViewController+Navigation.m */; };
 		59B9646C1CC841CA00F4F700 /* _NamedEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B964611CC841CA00F4F700 /* _NamedEntity.m */; };
 		59B9646D1CC841CA00F4F700 /* _Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B964631CC841CA00F4F700 /* _Note.m */; };
 		59B9646E1CC841CA00F4F700 /* _Notebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B964651CC841CA00F4F700 /* _Notebook.m */; };
@@ -45,6 +46,8 @@
 		59AFE47A1CCA1998001E7782 /* AGTCoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGTCoreDataTableViewController.m; sourceTree = "<group>"; };
 		59AFE47C1CCA1A4F001E7782 /* NotebooksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotebooksViewController.h; sourceTree = "<group>"; };
 		59AFE47D1CCA1A4F001E7782 /* NotebooksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotebooksViewController.m; sourceTree = "<group>"; };
+		59AFE4801CCA4198001E7782 /* UIViewController+Navigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Navigation.h"; sourceTree = "<group>"; };
+		59AFE4811CCA4198001E7782 /* UIViewController+Navigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Navigation.m"; sourceTree = "<group>"; };
 		59B964601CC841CA00F4F700 /* _NamedEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _NamedEntity.h; sourceTree = SOURCE_ROOT; };
 		59B964611CC841CA00F4F700 /* _NamedEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _NamedEntity.m; sourceTree = SOURCE_ROOT; };
 		59B964621CC841CA00F4F700 /* _Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Note.h; sourceTree = SOURCE_ROOT; };
@@ -89,6 +92,7 @@
 		592456671CC76C4C00C5450B /* Everpobre */ = {
 			isa = PBXGroup;
 			children = (
+				59AFE47F1CCA4062001E7782 /* Categories */,
 				59AFE4781CCA198A001E7782 /* Controllers */,
 				592456791CC7769200C5450B /* Models */,
 				5924566B1CC76C4C00C5450B /* AppDelegate.h */,
@@ -138,6 +142,15 @@
 				59AFE47D1CCA1A4F001E7782 /* NotebooksViewController.m */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		59AFE47F1CCA4062001E7782 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				59AFE4801CCA4198001E7782 /* UIViewController+Navigation.h */,
+				59AFE4811CCA4198001E7782 /* UIViewController+Navigation.m */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 		59B964721CC8428600F4F700 /* Machine */ = {
@@ -231,6 +244,7 @@
 				59B964701CC841CA00F4F700 /* Note.m in Sources */,
 				5924567C1CC77B4E00C5450B /* AGTCoreDataStack.m in Sources */,
 				5924566D1CC76C4C00C5450B /* AppDelegate.m in Sources */,
+				59AFE4821CCA4198001E7782 /* UIViewController+Navigation.m in Sources */,
 				59B9646F1CC841CA00F4F700 /* NamedEntity.m in Sources */,
 				59AFE47E1CCA1A4F001E7782 /* NotebooksViewController.m in Sources */,
 				5924566A1CC76C4C00C5450B /* main.m in Sources */,
