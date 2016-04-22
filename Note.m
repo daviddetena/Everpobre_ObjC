@@ -25,6 +25,7 @@
                                                        inManagedObjectContext:context];
     
     // Set dates and notebook
+    note.name = name;
     note.creationDate = [NSDate date];
     note.modificationDate = [NSDate date];
     note.notebook = notebook;

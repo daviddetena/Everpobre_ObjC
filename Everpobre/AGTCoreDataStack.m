@@ -35,6 +35,9 @@
     if (_context == nil){
         _context = [[NSManagedObjectContext alloc] init];
         _context.persistentStoreCoordinator = self.storeCoordinator;
+        
+        // Add a UndoManager
+        _context.undoManager = [[NSUndoManager alloc] init];
     }
     return _context;
 }

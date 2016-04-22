@@ -11,6 +11,7 @@
 #import "Note.h"
 #import "Notebook.h"
 #import "Settings.h"
+#import "NotebooksViewController.h"
 
 @interface AppDelegate ()
 
@@ -24,10 +25,29 @@
     // Create a CoreDataStack intance with Model.sqlite saved to Documents folder
     self.model = [AGTCoreDataStack coreDataStackWithModelName:@"Model"];
     
-    [self playWithData];
     [self autoSave];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    
+    // Create a FetchRequest (sorted by modificationDate DESC, name ASC) and an NSFetchedResultsController
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:[Notebook entityName]];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:NamedEntityAttributes.modificationDate ascending:NO],
+                                [NSSortDescriptor sortDescriptorWithKey:NamedEntityAttributes.name ascending:YES]];
+    
+    NSFetchedResultsController *results = [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                                                              managedObjectContext:self.model.context
+                                                                                sectionNameKeyPath:nil
+                                                                                         cacheName:nil];
+    
+    // This NotebooksVC will be embedded in a NavigationController, which will be the rootVC
+    NotebooksViewController *nbVC = [[NotebooksViewController alloc] initWithFetchedResultsController:results
+                                                                                                style:UITableViewStylePlain];
+    
+    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:nbVC];
+    self.window.rootViewController = navVC;
+    
+    
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

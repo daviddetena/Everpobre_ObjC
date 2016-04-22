@@ -24,6 +24,7 @@
                                                        inManagedObjectContext:context];
     
     // Set dates
+    notebook.name = name;
     notebook.creationDate = [NSDate date];
     notebook.modificationDate = [NSDate date];
     
