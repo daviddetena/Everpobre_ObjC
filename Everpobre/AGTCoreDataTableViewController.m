@@ -179,5 +179,16 @@
     }
 }
 
+
+#pragma mark - UndoManagement
+- (void) motionEnded:(UIEventSubtype) motion withEvent:(nullable UIEvent *)event{
+    
+    // Shake gesture performed
+    if(motion == UIEventSubtypeMotionShake){
+        [self.fetchedResultsController.managedObjectContext.undoManager undo];
+    }
+}
+
+
 @end
 
