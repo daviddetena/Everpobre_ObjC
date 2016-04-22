@@ -20,6 +20,9 @@
 - (void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.title = @"Everpobre";
+    
+    // Setup navigation bar buttoms
+    [self configureBarButtons];
 }
 
 
@@ -48,6 +51,25 @@
     
     // Return the cell
     return cell;
+}
+
+
+#pragma mark - Utils
+- (void) configureBarButtons{
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                               target:self
+                                                                               action:@selector(addNotebook:)];
+    
+    // Add button to navigation bar
+    self.navigationItem.rightBarButtonItem = addButton;
+}
+
+
+#pragma mark - Actions
+- (void) addNotebook:(id) sender{
+    
+    // Create a new Notebook instance and TableView will be refreshed automatically (see AGTCoreDataTableViewController)
+    [Notebook notebookWithName:@"New Notebook" context:self.fetchedResultsController.managedObjectContext];
 }
 
 
