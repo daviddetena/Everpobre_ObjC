@@ -26,6 +26,7 @@
     // Create a CoreDataStack intance with Model.sqlite saved to Documents folder
     self.model = [AGTCoreDataStack coreDataStackWithModelName:@"Model"];
     
+    //[self playWithData];
     [self autoSave];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -90,27 +91,57 @@
 
 - (void)playWithData{
     
-    // Create a notebook
-    Notebook *notebook = [Notebook notebookWithName:@"GOTY games"
-                                            context:self.model.context];
+    // Erase all previous data
+    [self.model zapAllData];
+    
+    // Create notebooks and notes for them
+    Notebook *notebookGames = [Notebook notebookWithName:@"GOTY games" context:self.model.context];
+    Notebook *notebookTodos = [Notebook notebookWithName:@"TO-DOs" context:self.model.context];
     
     [Note noteWithName:@"The Last Of Us Remastered"
-                            notebook:notebook
-                             context:self.model.context];
+              notebook:notebookGames
+               context:self.model.context];
     
     [Note noteWithName:@"Uncharted 4"
-                            notebook:notebook
-                             context:self.model.context];
+              notebook:notebookGames
+               context:self.model.context];
+    
+    
+    [Note noteWithName:@"Write a book"
+              notebook:notebookTodos
+               context:self.model.context];
+    
+    [Note noteWithName:@"Have a son"
+              notebook:notebookTodos
+               context:self.model.context];
+    
+    [Note noteWithName:@"Own a tree"
+              notebook:notebookTodos
+               context:self.model.context];
+    
+    [Note noteWithName:@"Be happy and live my life"
+              notebook:notebookTodos
+               context:self.model.context];
+    
+    
+    
+    // Some samples with NSPredicate
+    NSPredicate *games = [NSPredicate predicateWithFormat:@"notebook.name ==[cd] %@", notebookGames.name];
+    NSPredicate *uncharted = [NSPredicate predicateWithFormat:@"name CONTAINS[cd] 'uncharted'"];
+    NSPredicate *unchartedGame = [NSCompoundPredicate andPredicateWithSubpredicates:@[games, uncharted]];
+    
     
     // Search
     // NSFetchRequest. Search Notes
-    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:[Note entityName]];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:[Note entityName]];
     
     // Sorting by name ASC, modificationDate DESC
     request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:NamedEntityAttributes.name
                                                               ascending:YES],
                                 [NSSortDescriptor sortDescriptorWithKey:NamedEntityAttributes.modificationDate
                                                               ascending:NO]];
+    
+    request.predicate = unchartedGame;
     
     NSError *error;
     NSArray *results = [self.model.context executeFetchRequest:request error:&error];
@@ -120,10 +151,12 @@
     }
     else{
         NSLog(@"Found %lu item(s)", (unsigned long)[results count]);
+        NSLog(@"Results: \n %@", results);
     }
     
     // Save
-    [self save];
+    //[self save];
+
 }
 
 

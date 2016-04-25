@@ -8,6 +8,7 @@
 
 #import "NotebooksViewController.h"
 #import "Notebook.h"
+#import "NotebookCellView.h"
 
 @interface NotebooksViewController ()
 
@@ -28,6 +29,10 @@
     
     // Suscribe to proximity sensor notitications
     [self setupProximitySensorNotifications];
+    
+    // Register nib for custom cell
+    UINib *cellNib = [UINib nibWithNibName:@"NotebookCellView" bundle:nil];
+    [self.tableView registerNib:cellNib forCellReuseIdentifier:[NotebookCellView cellId]];
 }
 
 
@@ -45,22 +50,12 @@
     // Find out the notebook in the NSFetchResultsController
     Notebook *nb = [self notebookAtIndexPath:indexPath];
     
-    // Create a cell (reuse if exists)
-    static NSString *cellId = @"cellId";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
-    
-    if(cell == nil){
-        // Create a new one
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
-                                      reuseIdentifier:cellId];
-    }
+    // Grab custom cell (reuse if exists)
+    NotebookCellView *cell = [tableView dequeueReusableCellWithIdentifier:[NotebookCellView cellId]];
     
     // Sync notebook data with cell (controller with view)
-    cell.textLabel.text = nb.name;
-    NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
-    fmt.dateStyle = NSDateFormatterMediumStyle;
-    cell.detailTextLabel.text = [fmt stringFromDate:nb.modificationDate];
-    
+    cell.nameView.text = nb.name;
+    cell.numberOfNotesView.text = [NSString stringWithFormat:@"%lu", nb.notes.count];
     
     // Return the cell
     return cell;
@@ -78,6 +73,15 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
         [self.fetchedResultsController.managedObjectContext deleteObject:nb];
     }
 }
+
+
+
+#pragma mark - TableView Delegate
+// Custom cell height
+-(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return [NotebookCellView cellHeight];
+}
+
 
 
 #pragma mark - Utils
