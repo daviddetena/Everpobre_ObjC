@@ -26,7 +26,7 @@
     // Create a CoreDataStack intance with Model.sqlite saved to Documents folder
     self.model = [AGTCoreDataStack coreDataStackWithModelName:@"Model"];
     
-    //[self playWithData];
+    [self playWithData];
     [self autoSave];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -142,21 +142,15 @@
                                                               ascending:NO]];
     
     request.predicate = unchartedGame;
+    NSArray *results = [self.model executeFetchRequest:request withErrorBlock:^(NSError *error) {
+        NSLog(@"Error while fetching %@", request);
+    }];
     
-    NSError *error;
-    NSArray *results = [self.model.context executeFetchRequest:request error:&error];
-    
-    if(results == nil){
-        NSLog(@"Error when saving: %@", error);
-    }
-    else{
-        NSLog(@"Found %lu item(s)", (unsigned long)[results count]);
-        NSLog(@"Results: \n %@", results);
-    }
+    NSLog(@"Results: %lu items: \n", (unsigned long)[results count]);
+    NSLog(@"%@", results);
     
     // Save
     //[self save];
-
 }
 
 

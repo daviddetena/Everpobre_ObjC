@@ -34,7 +34,7 @@
 -(void) saveWithErrorBlock: (void(^)(NSError *error))errorBlock;
 
 -(NSArray *) executeFetchRequest:(NSFetchRequest *)req
-                      errorBlock:(void(^)(NSError *error)) errorBlock;
+                  withErrorBlock:(void(^)(NSError *error)) errorBlock;
 
 
 @end
