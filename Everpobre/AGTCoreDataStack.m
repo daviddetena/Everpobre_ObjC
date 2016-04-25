@@ -188,14 +188,14 @@
 }
 
 -(NSArray *) executeFetchRequest:(NSFetchRequest *)req
-                      errorBlock:(void(^)(NSError *error)) errorBlock{
+                  withErrorBlock:(void(^)(NSError *error)) errorBlock{
     
     NSError *err;
     NSArray *res = [self.context executeFetchRequest:req
                                                error:&err];
     
     if (res == nil) {
-        // la cagamos
+        // Error while executing fetchRequest
         if (errorBlock != nil) {
             errorBlock(err);
         }
