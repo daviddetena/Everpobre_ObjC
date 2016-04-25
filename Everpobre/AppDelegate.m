@@ -26,8 +26,8 @@
     // Create a CoreDataStack intance with Model.sqlite saved to Documents folder
     self.model = [AGTCoreDataStack coreDataStackWithModelName:@"Model"];
     
-    [self playWithData];
-    [self autoSave];
+    //[self playWithData];
+    //[self autoSave];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
@@ -142,6 +142,7 @@
                                                               ascending:NO]];
     
     request.predicate = unchartedGame;
+    // Run custom Core Data Stack's executeFetchRequest method
     NSArray *results = [self.model executeFetchRequest:request withErrorBlock:^(NSError *error) {
         NSLog(@"Error while fetching %@", request);
     }];
@@ -156,7 +157,6 @@
 
 // Save to disk
 - (void)save{
-    
     [self.model saveWithErrorBlock:^(NSError *error) {
         NSLog(@"Error when saving to disk: %s \n\n %@", __func__, error);
     }];
