@@ -24,6 +24,8 @@
 		59B9646F1CC841CA00F4F700 /* NamedEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B964671CC841CA00F4F700 /* NamedEntity.m */; };
 		59B964701CC841CA00F4F700 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B964691CC841CA00F4F700 /* Note.m */; };
 		59B964711CC841CA00F4F700 /* Notebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B9646B1CC841CA00F4F700 /* Notebook.m */; };
+		59BF64ED1CE0F5A2000F977F /* NoteCollectionCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59BF64EC1CE0F5A2000F977F /* NoteCollectionCellView.xib */; };
+		59BF64F01CE0F74F000F977F /* NoteCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BF64EF1CE0F74F000F977F /* NoteCellView.m */; };
 		59F33A221CCAB1F000CAAA81 /* NotebookCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F33A211CCAB1EF00CAAA81 /* NotebookCellView.xib */; };
 		59F33A251CCAB3F000CAAA81 /* NotebookCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F33A241CCAB3F000CAAA81 /* NotebookCellView.m */; };
 /* End PBXBuildFile section */
@@ -62,6 +64,9 @@
 		59B964691CC841CA00F4F700 /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = SOURCE_ROOT; };
 		59B9646A1CC841CA00F4F700 /* Notebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Notebook.h; sourceTree = SOURCE_ROOT; };
 		59B9646B1CC841CA00F4F700 /* Notebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Notebook.m; sourceTree = SOURCE_ROOT; };
+		59BF64EC1CE0F5A2000F977F /* NoteCollectionCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteCollectionCellView.xib; sourceTree = "<group>"; };
+		59BF64EE1CE0F74F000F977F /* NoteCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteCellView.h; sourceTree = "<group>"; };
+		59BF64EF1CE0F74F000F977F /* NoteCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteCellView.m; sourceTree = "<group>"; };
 		59F33A211CCAB1EF00CAAA81 /* NotebookCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotebookCellView.xib; sourceTree = "<group>"; };
 		59F33A231CCAB3F000CAAA81 /* NotebookCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotebookCellView.h; sourceTree = "<group>"; };
 		59F33A241CCAB3F000CAAA81 /* NotebookCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotebookCellView.m; sourceTree = "<group>"; };
@@ -180,6 +185,9 @@
 				59F33A211CCAB1EF00CAAA81 /* NotebookCellView.xib */,
 				59F33A231CCAB3F000CAAA81 /* NotebookCellView.h */,
 				59F33A241CCAB3F000CAAA81 /* NotebookCellView.m */,
+				59BF64EC1CE0F5A2000F977F /* NoteCollectionCellView.xib */,
+				59BF64EE1CE0F74F000F977F /* NoteCellView.h */,
+				59BF64EF1CE0F74F000F977F /* NoteCellView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -242,6 +250,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59BF64ED1CE0F5A2000F977F /* NoteCollectionCellView.xib in Resources */,
 				59F33A221CCAB1F000CAAA81 /* NotebookCellView.xib in Resources */,
 				5924566F1CC76C4C00C5450B /* Assets.xcassets in Resources */,
 				592456721CC76C4C00C5450B /* LaunchScreen.storyboard in Resources */,
@@ -256,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				599230351CC93DD000568E9F /* Photo.m in Sources */,
+				59BF64F01CE0F74F000F977F /* NoteCellView.m in Sources */,
 				599230321CC93DC400568E9F /* _Photo.m in Sources */,
 				59B964711CC841CA00F4F700 /* Notebook.m in Sources */,
 				59B964701CC841CA00F4F700 /* Note.m in Sources */,
