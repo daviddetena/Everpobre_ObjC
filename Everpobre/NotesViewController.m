@@ -6,6 +6,7 @@
 //  Copyright © 2016 David de Tena. All rights reserved.
 //
 
+#import "Settings.h"
 #import "NotesViewController.h"
 #import "Note.h"
 #import "NoteCellView.h"
@@ -26,6 +27,10 @@ static NSString *cellId = @"NoteCellId";
     
     // Register custom cell
     [self registerNib];
+    
+    // Setup UI
+    self.collectionView.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1];
+    self.title = NOTES_COLLECTION_TITLE;
 }
 
 
@@ -50,13 +55,7 @@ static NSString *cellId = @"NoteCellId";
                                                                    forIndexPath:indexPath];
     
     // Configure cell (sync model and view)
-    NSDateFormatter *formatter = [NSDateFormatter new];
-    formatter.dateStyle = NSDateFormatterMediumStyle;
-    
-    cell.titleLabel.text = note.name;
-    cell.photoView.image = note.photo.image;
-    cell.modificationDateLabel.text = [formatter stringFromDate:note.modificationDate];
-    
+    [cell observeNote:note];        
     return cell;
 }
 
