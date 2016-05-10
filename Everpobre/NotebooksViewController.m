@@ -9,6 +9,8 @@
 #import "NotebooksViewController.h"
 #import "Notebook.h"
 #import "NotebookCellView.h"
+#import "NotesViewController.h"
+#import "Note.h"
 
 @interface NotebooksViewController ()
 
@@ -78,8 +80,38 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 
 #pragma mark - TableView Delegate
 // Custom cell height
--(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return [NotebookCellView cellHeight];
+}
+
+// Tapping a notebook will present a collection view with its notes
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    // Create fetch request. Sort by note name ASC, modification date DESC, creation date DESC
+    NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:[Note entityName]];
+    req.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:NamedEntityAttributes.name ascending:YES],
+                            [NSSortDescriptor sortDescriptorWithKey:NamedEntityAttributes.modificationDate ascending:NO],
+                            [NSSortDescriptor sortDescriptorWithKey:NamedEntityAttributes.creationDate ascending:NO]];
+    
+    // NSPredicate to filter the results
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"notebook == %@", [self notebookAtIndexPath:indexPath]];
+    req.predicate = predicate;
+    
+    // Create fetchedResultsController
+    NSFetchedResultsController *fetchedRC = [[NSFetchedResultsController alloc]initWithFetchRequest:req
+                                                                               managedObjectContext:self.fetchedResultsController.managedObjectContext sectionNameKeyPath:nil
+                                                                                          cacheName:nil];
+    // Layout
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    layout.itemSize = CGSizeMake(120, 150);
+    
+    // Create notes controller
+    NotesViewController *notesVC = [NotesViewController coreDataCollectionViewControllerWithFetchedResultsController:fetchedRC
+                                                                                                               layout:layout];
+    // Push controller
+    [self.navigationController pushViewController:notesVC
+                                         animated:YES];
+    
 }
 
 
