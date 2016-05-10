@@ -13,6 +13,9 @@
 		592456721CC76C4C00C5450B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 592456701CC76C4C00C5450B /* LaunchScreen.storyboard */; };
 		5924567C1CC77B4E00C5450B /* AGTCoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 5924567B1CC77B4E00C5450B /* AGTCoreDataStack.m */; };
 		5924567F1CC77F0C00C5450B /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5924567D1CC77F0C00C5450B /* Model.xcdatamodeld */; };
+		592F8F6B1CE1C05600FD788C /* AGTCoreDataCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 592F8F6A1CE1C05600FD788C /* AGTCoreDataCollectionViewController.m */; };
+		592F8F6E1CE1C0CB00FD788C /* NotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 592F8F6D1CE1C0CB00FD788C /* NotesViewController.m */; };
+		59838BE31CE1CD6B00A67E5A /* noImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 59838BE21CE1CD6B00A67E5A /* noImage.png */; };
 		599230321CC93DC400568E9F /* _Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 599230311CC93DC400568E9F /* _Photo.m */; };
 		599230351CC93DD000568E9F /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 599230341CC93DD000568E9F /* Photo.m */; };
 		59AFE47B1CCA1998001E7782 /* AGTCoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59AFE47A1CCA1998001E7782 /* AGTCoreDataTableViewController.m */; };
@@ -41,6 +44,11 @@
 		5924567A1CC77B4E00C5450B /* AGTCoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGTCoreDataStack.h; sourceTree = "<group>"; };
 		5924567B1CC77B4E00C5450B /* AGTCoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGTCoreDataStack.m; sourceTree = "<group>"; };
 		5924567E1CC77F0C00C5450B /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		592F8F691CE1C05600FD788C /* AGTCoreDataCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGTCoreDataCollectionViewController.h; sourceTree = "<group>"; };
+		592F8F6A1CE1C05600FD788C /* AGTCoreDataCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGTCoreDataCollectionViewController.m; sourceTree = "<group>"; };
+		592F8F6C1CE1C0CB00FD788C /* NotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesViewController.h; sourceTree = "<group>"; };
+		592F8F6D1CE1C0CB00FD788C /* NotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesViewController.m; sourceTree = "<group>"; };
+		59838BE21CE1CD6B00A67E5A /* noImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noImage.png; sourceTree = "<group>"; };
 		599230301CC93DC400568E9F /* _Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Photo.h; sourceTree = SOURCE_ROOT; };
 		599230311CC93DC400568E9F /* _Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Photo.m; sourceTree = SOURCE_ROOT; };
 		599230331CC93DD000568E9F /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = SOURCE_ROOT; };
@@ -102,6 +110,7 @@
 		592456671CC76C4C00C5450B /* Everpobre */ = {
 			isa = PBXGroup;
 			children = (
+				59838BE11CE1CD5D00A67E5A /* Resources */,
 				59F33A201CCAB11200CAAA81 /* Views */,
 				59AFE47F1CCA4062001E7782 /* Categories */,
 				59AFE4781CCA198A001E7782 /* Controllers */,
@@ -144,13 +153,25 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		59838BE11CE1CD5D00A67E5A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				59838BE21CE1CD6B00A67E5A /* noImage.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		59AFE4781CCA198A001E7782 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				592F8F691CE1C05600FD788C /* AGTCoreDataCollectionViewController.h */,
+				592F8F6A1CE1C05600FD788C /* AGTCoreDataCollectionViewController.m */,
 				59AFE4791CCA1998001E7782 /* AGTCoreDataTableViewController.h */,
 				59AFE47A1CCA1998001E7782 /* AGTCoreDataTableViewController.m */,
 				59AFE47C1CCA1A4F001E7782 /* NotebooksViewController.h */,
 				59AFE47D1CCA1A4F001E7782 /* NotebooksViewController.m */,
+				592F8F6C1CE1C0CB00FD788C /* NotesViewController.h */,
+				592F8F6D1CE1C0CB00FD788C /* NotesViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -252,6 +273,7 @@
 			files = (
 				59BF64ED1CE0F5A2000F977F /* NoteCollectionCellView.xib in Resources */,
 				59F33A221CCAB1F000CAAA81 /* NotebookCellView.xib in Resources */,
+				59838BE31CE1CD6B00A67E5A /* noImage.png in Resources */,
 				5924566F1CC76C4C00C5450B /* Assets.xcassets in Resources */,
 				592456721CC76C4C00C5450B /* LaunchScreen.storyboard in Resources */,
 			);
@@ -266,6 +288,7 @@
 			files = (
 				599230351CC93DD000568E9F /* Photo.m in Sources */,
 				59BF64F01CE0F74F000F977F /* NoteCellView.m in Sources */,
+				592F8F6B1CE1C05600FD788C /* AGTCoreDataCollectionViewController.m in Sources */,
 				599230321CC93DC400568E9F /* _Photo.m in Sources */,
 				59B964711CC841CA00F4F700 /* Notebook.m in Sources */,
 				59B964701CC841CA00F4F700 /* Note.m in Sources */,
@@ -278,6 +301,7 @@
 				5924566A1CC76C4C00C5450B /* main.m in Sources */,
 				59AFE47B1CCA1998001E7782 /* AGTCoreDataTableViewController.m in Sources */,
 				59B9646D1CC841CA00F4F700 /* _Note.m in Sources */,
+				592F8F6E1CE1C0CB00FD788C /* NotesViewController.m in Sources */,
 				59B9646C1CC841CA00F4F700 /* _NamedEntity.m in Sources */,
 				59B9646E1CC841CA00F4F700 /* _Notebook.m in Sources */,
 				5924567F1CC77F0C00C5450B /* Model.xcdatamodeld in Sources */,
