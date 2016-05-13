@@ -11,6 +11,7 @@
 #import "Note.h"
 #import "NoteCellView.h"
 #import "Photo.h"
+#import "NoteViewController.h"
 
 static NSString *cellId = @"NoteCellId";
 
@@ -57,6 +58,26 @@ static NSString *cellId = @"NoteCellId";
     // Configure cell (sync model and view)
     [cell observeNote:note];        
     return cell;
+}
+
+
+#pragma mark - UICollectionView Delegate
+-(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    // Grab the note
+    Note *note = [self noteAtIndexPath:indexPath];
+    
+    // New instance of NoteVC
+    NoteViewController *noteVC = [[NoteViewController alloc] initWithModel:note];
+    
+    // Push
+    [self.navigationController pushViewController:noteVC animated:YES];
+}
+
+
+#pragma mark - Utils
+-(Note *) noteAtIndexPath:(NSIndexPath *)	indexPath{
+    return (Note *) [self.fetchedResultsController objectAtIndexPath:indexPath];
 }
 
 @end

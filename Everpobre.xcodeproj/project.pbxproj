@@ -29,6 +29,9 @@
 		59B964711CC841CA00F4F700 /* Notebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B9646B1CC841CA00F4F700 /* Notebook.m */; };
 		59BF64ED1CE0F5A2000F977F /* NoteCollectionCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59BF64EC1CE0F5A2000F977F /* NoteCollectionCellView.xib */; };
 		59BF64F01CE0F74F000F977F /* NoteCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BF64EF1CE0F74F000F977F /* NoteCellView.m */; };
+		59F23B431CE5C94100201206 /* NoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F23B411CE5C94100201206 /* NoteViewController.m */; };
+		59F23B441CE5C94100201206 /* NoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F23B421CE5C94100201206 /* NoteViewController.xib */; };
+		59F23B461CE5D45E00201206 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59F23B451CE5D45E00201206 /* MapKit.framework */; };
 		59F33A221CCAB1F000CAAA81 /* NotebookCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F33A211CCAB1EF00CAAA81 /* NotebookCellView.xib */; };
 		59F33A251CCAB3F000CAAA81 /* NotebookCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F33A241CCAB3F000CAAA81 /* NotebookCellView.m */; };
 /* End PBXBuildFile section */
@@ -75,6 +78,10 @@
 		59BF64EC1CE0F5A2000F977F /* NoteCollectionCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteCollectionCellView.xib; sourceTree = "<group>"; };
 		59BF64EE1CE0F74F000F977F /* NoteCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteCellView.h; sourceTree = "<group>"; };
 		59BF64EF1CE0F74F000F977F /* NoteCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteCellView.m; sourceTree = "<group>"; };
+		59F23B401CE5C94100201206 /* NoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteViewController.h; sourceTree = "<group>"; };
+		59F23B411CE5C94100201206 /* NoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteViewController.m; sourceTree = "<group>"; };
+		59F23B421CE5C94100201206 /* NoteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteViewController.xib; sourceTree = "<group>"; };
+		59F23B451CE5D45E00201206 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		59F33A211CCAB1EF00CAAA81 /* NotebookCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotebookCellView.xib; sourceTree = "<group>"; };
 		59F33A231CCAB3F000CAAA81 /* NotebookCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotebookCellView.h; sourceTree = "<group>"; };
 		59F33A241CCAB3F000CAAA81 /* NotebookCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotebookCellView.m; sourceTree = "<group>"; };
@@ -85,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59F23B461CE5D45E00201206 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,13 +123,11 @@
 				59AFE47F1CCA4062001E7782 /* Categories */,
 				59AFE4781CCA198A001E7782 /* Controllers */,
 				592456791CC7769200C5450B /* Models */,
-				5924566B1CC76C4C00C5450B /* AppDelegate.h */,
-				5924566C1CC76C4C00C5450B /* AppDelegate.m */,
+				59F23B481CE5D4AD00201206 /* App */,
 				5924566E1CC76C4C00C5450B /* Assets.xcassets */,
 				592456701CC76C4C00C5450B /* LaunchScreen.storyboard */,
-				592456731CC76C4C00C5450B /* Info.plist */,
+				59F23B471CE5D47800201206 /* Frameworks */,
 				592456681CC76C4C00C5450B /* Supporting Files */,
-				599230361CC95A2B00568E9F /* Settings.h */,
 			);
 			path = Everpobre;
 			sourceTree = "<group>";
@@ -172,6 +178,9 @@
 				59AFE47D1CCA1A4F001E7782 /* NotebooksViewController.m */,
 				592F8F6C1CE1C0CB00FD788C /* NotesViewController.h */,
 				592F8F6D1CE1C0CB00FD788C /* NotesViewController.m */,
+				59F23B401CE5C94100201206 /* NoteViewController.h */,
+				59F23B411CE5C94100201206 /* NoteViewController.m */,
+				59F23B421CE5C94100201206 /* NoteViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -198,6 +207,26 @@
 				59B964651CC841CA00F4F700 /* _Notebook.m */,
 			);
 			name = Machine;
+			sourceTree = "<group>";
+		};
+		59F23B471CE5D47800201206 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				59F23B451CE5D45E00201206 /* MapKit.framework */,
+			);
+			name = Frameworks;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		59F23B481CE5D4AD00201206 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				5924566B1CC76C4C00C5450B /* AppDelegate.h */,
+				5924566C1CC76C4C00C5450B /* AppDelegate.m */,
+				592456731CC76C4C00C5450B /* Info.plist */,
+				599230361CC95A2B00568E9F /* Settings.h */,
+			);
+			name = App;
 			sourceTree = "<group>";
 		};
 		59F33A201CCAB11200CAAA81 /* Views */ = {
@@ -275,6 +304,7 @@
 				59F33A221CCAB1F000CAAA81 /* NotebookCellView.xib in Resources */,
 				59838BE31CE1CD6B00A67E5A /* noImage.png in Resources */,
 				5924566F1CC76C4C00C5450B /* Assets.xcassets in Resources */,
+				59F23B441CE5C94100201206 /* NoteViewController.xib in Resources */,
 				592456721CC76C4C00C5450B /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,6 +324,7 @@
 				59B964701CC841CA00F4F700 /* Note.m in Sources */,
 				5924567C1CC77B4E00C5450B /* AGTCoreDataStack.m in Sources */,
 				5924566D1CC76C4C00C5450B /* AppDelegate.m in Sources */,
+				59F23B431CE5C94100201206 /* NoteViewController.m in Sources */,
 				59AFE4821CCA4198001E7782 /* UIViewController+Navigation.m in Sources */,
 				59B9646F1CC841CA00F4F700 /* NamedEntity.m in Sources */,
 				59AFE47E1CCA1A4F001E7782 /* NotebooksViewController.m in Sources */,
