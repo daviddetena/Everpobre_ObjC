@@ -82,6 +82,7 @@
 		59F23B411CE5C94100201206 /* NoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteViewController.m; sourceTree = "<group>"; };
 		59F23B421CE5C94100201206 /* NoteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteViewController.xib; sourceTree = "<group>"; };
 		59F23B451CE5D45E00201206 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		59F23B4A1CE5DC3200201206 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		59F33A211CCAB1EF00CAAA81 /* NotebookCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotebookCellView.xib; sourceTree = "<group>"; };
 		59F33A231CCAB3F000CAAA81 /* NotebookCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotebookCellView.h; sourceTree = "<group>"; };
 		59F33A241CCAB3F000CAAA81 /* NotebookCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotebookCellView.m; sourceTree = "<group>"; };
@@ -118,6 +119,7 @@
 		592456671CC76C4C00C5450B /* Everpobre */ = {
 			isa = PBXGroup;
 			children = (
+				59F23B491CE5DBE300201206 /* Protocols */,
 				59838BE11CE1CD5D00A67E5A /* Resources */,
 				59F33A201CCAB11200CAAA81 /* Views */,
 				59AFE47F1CCA4062001E7782 /* Categories */,
@@ -227,6 +229,14 @@
 				599230361CC95A2B00568E9F /* Settings.h */,
 			);
 			name = App;
+			sourceTree = "<group>";
+		};
+		59F23B491CE5DBE300201206 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				59F23B4A1CE5DC3200201206 /* DetailViewController.h */,
+			);
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 		59F33A201CCAB11200CAAA81 /* Views */ = {

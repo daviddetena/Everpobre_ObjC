@@ -12,8 +12,11 @@
 #import <CoreData/CoreData.h>
 @interface AGTCoreDataCollectionViewController : UICollectionViewController
 
+#pragma mark - Properties
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property (strong, nonatomic) NSString *detailViewControllerClassName;
 
+#pragma mark - Methods
 +(instancetype) coreDataCollectionViewControllerWithFetchedResultsController:(NSFetchedResultsController *) resultsController
                                                                       layout:(UICollectionViewLayout*) layout;
 

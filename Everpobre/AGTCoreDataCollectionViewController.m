@@ -7,11 +7,11 @@
 //
 
 #import "AGTCoreDataCollectionViewController.h"
+#import "DetailViewController.h"
 
 @interface AGTCoreDataCollectionViewController ()<NSFetchedResultsControllerDelegate>
 @property (strong, nonatomic) NSMutableArray *objectChanges;
 @property (strong, nonatomic) NSMutableArray *sectionChanges;
-
 @end
 
 @implementation AGTCoreDataCollectionViewController
@@ -251,4 +251,23 @@
     [self.collectionView reloadData];
     
 }
+
+
+#pragma mark - Delegate
+// Custom method with things to be done when selecting an item
+-(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    // Check there is a detailVC class name
+    NSAssert(self.detailViewControllerClassName, @"You must set a detailViewController class name!");
+    
+    // Grab the model
+    id detailModel = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    // Create detail VC (implementing the DetailViewController protocol) with the class name 
+    UIViewController<DetailViewController> *detailVC = [[NSClassFromString(self.detailViewControllerClassName) alloc] initWithModel:detailModel];
+    
+    // Push
+    [self.navigationController pushViewController:detailVC animated:YES];
+}
+
 @end

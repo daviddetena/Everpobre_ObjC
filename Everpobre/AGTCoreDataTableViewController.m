@@ -8,8 +8,6 @@
 
 #import "AGTCoreDataTableViewController.h"
 
-
-
 @interface AGTCoreDataTableViewController()
 @property (nonatomic) BOOL beganUpdates;
 @end

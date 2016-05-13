@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "DetailViewController.h"
 
 @class Note;
 
 
-@interface NoteViewController : UIViewController
+@interface NoteViewController : UIViewController<DetailViewController>
 
 #pragma mark - Properties
 @property (weak, nonatomic) IBOutlet UILabel *modificationDateLabel;
@@ -21,7 +22,5 @@
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 
-#pragma mark - Init
--(id) initWithModel:(Note *) model;
 
 @end

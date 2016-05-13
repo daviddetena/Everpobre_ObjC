@@ -31,6 +31,10 @@ static NSString *cellId = @"NoteCellId";
     
     // Setup UI
     self.collectionView.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1];
+    
+    // Set detailVC class name
+    self.detailViewControllerClassName = NSStringFromClass([NoteViewController class]);
+    
     self.title = NOTES_COLLECTION_TITLE;
 }
 
@@ -60,7 +64,7 @@ static NSString *cellId = @"NoteCellId";
     return cell;
 }
 
-
+/*
 #pragma mark - UICollectionView Delegate
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -73,7 +77,7 @@ static NSString *cellId = @"NoteCellId";
     // Push
     [self.navigationController pushViewController:noteVC animated:YES];
 }
-
+*/
 
 #pragma mark - Utils
 -(Note *) noteAtIndexPath:(NSIndexPath *)	indexPath{

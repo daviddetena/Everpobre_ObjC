@@ -17,7 +17,7 @@
 @implementation NoteViewController
 
 #pragma mark - Init
--(id) initWithModel:(Note *) model{
+-(id) initWithModel:(id) model{
     if (self = [super initWithNibName:nil bundle:nil]) {
         _model = model;
         self.title = self.model.name;
