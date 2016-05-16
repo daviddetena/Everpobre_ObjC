@@ -119,17 +119,17 @@
 		592456671CC76C4C00C5450B /* Everpobre */ = {
 			isa = PBXGroup;
 			children = (
-				59F23B491CE5DBE300201206 /* Protocols */,
-				59838BE11CE1CD5D00A67E5A /* Resources */,
-				59F33A201CCAB11200CAAA81 /* Views */,
 				59AFE47F1CCA4062001E7782 /* Categories */,
-				59AFE4781CCA198A001E7782 /* Controllers */,
+				59F23B491CE5DBE300201206 /* Protocols */,
 				592456791CC7769200C5450B /* Models */,
+				59F33A201CCAB11200CAAA81 /* Views */,
+				59AFE4781CCA198A001E7782 /* Controllers */,
 				59F23B481CE5D4AD00201206 /* App */,
 				5924566E1CC76C4C00C5450B /* Assets.xcassets */,
 				592456701CC76C4C00C5450B /* LaunchScreen.storyboard */,
-				59F23B471CE5D47800201206 /* Frameworks */,
 				592456681CC76C4C00C5450B /* Supporting Files */,
+				59F23B471CE5D47800201206 /* Frameworks */,
+				59838BE11CE1CD5D00A67E5A /* Resources */,
 			);
 			path = Everpobre;
 			sourceTree = "<group>";
