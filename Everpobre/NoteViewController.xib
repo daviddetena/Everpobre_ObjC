@@ -41,10 +41,10 @@
                     <rect key="frame" x="300" y="200" width="300" height="180"/>
                 </mapView>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wwV-4Q-96d">
-                    <rect key="frame" x="21" y="397" width="558" height="187"/>
+                    <rect key="frame" x="0.0" y="397" width="600" height="203"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="187" id="WSI-IR-Ftc"/>
+                        <constraint firstAttribute="height" constant="203" id="WSI-IR-Ftc"/>
                     </constraints>
                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                     <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -61,8 +61,8 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="Vjx-ZC-5bG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="65" id="0H2-yt-dek"/>
-                <constraint firstAttribute="bottom" secondItem="wwV-4Q-96d" secondAttribute="bottom" constant="16" id="2Pt-8w-7pD"/>
-                <constraint firstItem="wwV-4Q-96d" firstAttribute="leading" secondItem="SbO-3k-hB7" secondAttribute="leading" id="4L7-zJ-m8O"/>
+                <constraint firstAttribute="bottom" secondItem="wwV-4Q-96d" secondAttribute="bottom" id="2Pt-8w-7pD"/>
+                <constraint firstItem="wwV-4Q-96d" firstAttribute="leading" secondItem="SbO-3k-hB7" secondAttribute="leading" constant="-21" id="4L7-zJ-m8O"/>
                 <constraint firstItem="cMr-u3-q3m" firstAttribute="bottom" secondItem="Uaf-fA-tnN" secondAttribute="bottom" id="JDa-cO-0JY"/>
                 <constraint firstItem="SbO-3k-hB7" firstAttribute="top" secondItem="Vjx-ZC-5bG" secondAttribute="bottom" constant="8" symbolic="YES" id="KnH-ve-aa4"/>
                 <constraint firstItem="Vjx-ZC-5bG" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Krf-ku-vlV"/>
@@ -76,7 +76,7 @@
                 <constraint firstItem="Uaf-fA-tnN" firstAttribute="width" secondItem="cMr-u3-q3m" secondAttribute="width" id="lsC-BX-HbO"/>
                 <constraint firstItem="Uaf-fA-tnN" firstAttribute="leading" secondItem="cMr-u3-q3m" secondAttribute="trailing" id="mme-gh-X3N"/>
                 <constraint firstItem="wwV-4Q-96d" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="nIw-KO-SdH"/>
-                <constraint firstItem="wwV-4Q-96d" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="21" id="uhS-NN-67h"/>
+                <constraint firstItem="wwV-4Q-96d" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="uhS-NN-67h"/>
                 <constraint firstItem="cMr-u3-q3m" firstAttribute="top" secondItem="Uaf-fA-tnN" secondAttribute="top" id="wWN-9I-lmf"/>
                 <constraint firstItem="Uaf-fA-tnN" firstAttribute="trailing" secondItem="Vjx-ZC-5bG" secondAttribute="trailing" id="xgd-0A-57V"/>
             </constraints>
