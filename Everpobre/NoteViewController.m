@@ -11,10 +11,11 @@
 #import "Photo.h"
 #import "Notebook.h"
 
-@interface NoteViewController ()
+@interface NoteViewController () <UITextFieldDelegate>
 @property (nonatomic, strong) Note *model;
 @property (nonatomic) BOOL isNew;
 @property (nonatomic) BOOL deleteCurrentNote;
+@property (nonatomic) CGRect textViewOrigin;
 @end
 
 @implementation NoteViewController
@@ -46,7 +47,7 @@
     fmt.dateStyle = NSDateFormatterLongStyle;
     
     self.modificationDateLabel.text = [fmt stringFromDate:self.model.modificationDate];
-    self.nameLabel.text = self.model.name;
+    self.nameText.text = self.model.name;
     self.textView.text = self.model.text;
     
     UIImage *img = self.model.photo.image;
@@ -65,6 +66,11 @@
                                                                                    action:@selector(cancelNote:)];
         self.navigationItem.rightBarButtonItem = cancelBtn;
     }
+    
+    
+    self.textViewOrigin = CGRectMake(self.textView.frame.origin.x, self.textView.frame.origin.y, self.textView.frame.size.width, self.textView.frame.size.height);
+    
+    self.nameText.delegate = self;
 }
 
 
@@ -77,6 +83,7 @@
     }
     else{
         // Sync changes from view to model
+        self.model.name = self.nameText.text;
         self.model.text = self.textView.text;
         self.model.photo.image = self.photoView.image;
     }
@@ -126,53 +133,78 @@
 
 - (void) notifyThatKeyboardWillAppear:(NSNotification *) notification{
     
-    NSLog(@"fecha está en el (%f,%f)",self.modificationDateLabel.frame.origin.x, self.modificationDateLabel.frame.origin.y);
-    NSLog(@"dimensiones textview: (%f,%f)", self.textView.frame.size.width, self.textView.frame.size.height);
-    
-    // Extract user info
-    NSDictionary *dict = notification.userInfo;
-    
-    // Extract animation duration
-    double duration = [[dict objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    double xOffset = self.textView.frame.origin.x - self.modificationDateLabel.frame.origin.x;
-    double yOffset = self.textView.frame.origin.y - self.modificationDateLabel.frame.origin.y;
-    
-    // Change uitextview properties => create an animation
-    [UIView animateWithDuration:duration
-                          delay:0
-                        options:0
-                     animations:^{
-                         
-                         for (UIView *each in self.view.subviews) {
-                             CGFloat w = each.frame.size.width;
-                             CGFloat h = each.frame.size.height;
-                             CGRect newFrame = CGRectMake(each.frame.origin.x - xOffset, each.frame.origin.y - yOffset, w, h);
-                             each.frame = newFrame;
+    // Move textview only for the description
+    if ([self.textView isFirstResponder]) {
+        NSLog(@"fecha está en el (%f,%f)",self.modificationDateLabel.frame.origin.x, self.modificationDateLabel.frame.origin.y);
+        NSLog(@"dimensiones textview: (%f,%f)", self.textView.frame.size.width, self.textView.frame.size.height);
+        
+        // Extract user info
+        NSDictionary *dict = notification.userInfo;
+        
+        // Extract animation duration
+        double duration = [[dict objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+        double xOffset = self.textView.frame.origin.x - self.modificationDateLabel.frame.origin.x;
+        double yOffset = self.textView.frame.origin.y - self.modificationDateLabel.frame.origin.y;
+        
+        // Change uitextview properties => create an animation
+        [UIView animateWithDuration:duration
+                              delay:0
+                            options:0
+                         animations:^{
                              
-                             //each.frame.origin = CGPointMake(each.frame.origin.x - xOffset, each.frame.origin.y - yOffset);
-                             //each.frame.origin.x = each.frame.origin.x - xOffset;
-                         }
-                         
-                         // Change origin to modification date label
-                         /*
-                         self.textView.frame = CGRectMake(self.modificationDateLabel.frame.origin.x, self.modificationDateLabel.frame.origin.y, self.textView.frame.size.width, self.textView.frame.size.height);
-                          */
-                         
-                        NSLog(@"nuevas dimensiones textview: (%f,%f)", self.textView.frame.origin.x, self.textView.frame.origin.y);
-                         
-                     } completion:nil];
-    
-    [UIView animateWithDuration:duration animations:^{
-        // Textview with little transparency
-        self.textView.alpha = 0.8;
-    }];
+                             for (UIView *each in self.view.subviews) {
+                                 CGFloat w = each.frame.size.width;
+                                 CGFloat h = each.frame.size.height;
+                                 CGRect newFrame = CGRectMake(each.frame.origin.x - xOffset, each.frame.origin.y - yOffset, w, h);
+                                 each.frame = newFrame;
+                                 
+                                 //each.frame.origin = CGPointMake(each.frame.origin.x - xOffset, each.frame.origin.y - yOffset);
+                                 //each.frame.origin.x = each.frame.origin.x - xOffset;
+                             }
+                             
+                             // Change origin to modification date label
+                             /*
+                              self.textView.frame = CGRectMake(self.modificationDateLabel.frame.origin.x, self.modificationDateLabel.frame.origin.y, self.textView.frame.size.width, self.textView.frame.size.height);
+                              */
+                             
+                             NSLog(@"nuevas dimensiones textview: (%f,%f)", self.textView.frame.origin.x, self.textView.frame.origin.y);
+                             
+                         } completion:nil];
+        
+        [UIView animateWithDuration:duration animations:^{
+            // Textview with little transparency
+            self.textView.alpha = 0.8;
+        }];
+    }
 }
 
 
 
 - (void) notifyThatKeyboardWillDisappear:(NSNotification *) notification{
-    // Extract user info
-    //NSDictionary *dict = notification.userInfo;
+    
+    // Move textView along with keyboard animation
+    if ([self.textView isFirstResponder]) {
+        
+        // Extract user info with duration
+        NSDictionary *dict = notification.userInfo;
+        double duration = [[dict objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+        
+        // Change uitextview properties => create an animation
+        [UIView animateWithDuration:duration
+                              delay:0
+                            options:0
+                         animations:^{
+                             
+                              self.textView.frame = CGRectMake(self.textViewOrigin.origin.x, self.textViewOrigin.origin.y, self.view.frame.size.width, self.view.frame.size.height);
+                              
+                             
+                         } completion:nil];
+        
+        [UIView animateWithDuration:duration animations:^{
+            // Textview will be completely visible again
+            self.textView.alpha = 1;
+        }];
+    }
 }
 
 
@@ -181,8 +213,9 @@
  */
 - (void) setupInputAccessoryView{
     
-    // Create toolbar
-    UIToolbar *bar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
+    // Create toolbars for keyboard inputs
+    UIToolbar *textViewBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.textView.frame.size.width, 44)];
+    //UIToolbar *textFieldBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.textView.frame.size.width, 44)];
     
     // Add smile, separator and done buttons
     UIBarButtonItem *separatorBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
@@ -197,8 +230,10 @@
                                                                 action:@selector(insertTitle:)];
     
     // Set as accessoryInputView
-    [bar setItems:@[smileBtn, separatorBtn, doneBtn]];
-    self.textView.inputAccessoryView = bar;
+    [textViewBar setItems:@[smileBtn, separatorBtn, doneBtn]];
+    //[textFieldBar setItems:@[separatorBtn, doneBtn]];
+    self.textView.inputAccessoryView = textViewBar;
+    //self.nameText.inputAccessoryView = textFieldBar;
 }
 
 
@@ -210,6 +245,18 @@
 // Insert the title of the sender as text in the input view
 - (void) insertTitle:(UIBarButtonItem *) sender{
     [self.textView insertText:[NSString stringWithFormat:@"%@ ", sender.title]];
+}
+
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL) textFieldShouldReturn:(UITextField *)textField{
+    
+    // Validate text
+    
+    // Hide keyboard
+    [textField resignFirstResponder];
+    return YES;
 }
 
 @end
