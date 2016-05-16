@@ -45,6 +45,7 @@
     self.photoView.image = img;
     
     [self startObservingKeyboard];
+    [self setupInputAccessoryView];
 }
 
 
@@ -91,8 +92,6 @@
 
 
 - (void) notifyThatKeyboardWillAppear:(NSNotification *) notification{
-    
-    NSLog(@"aparece teclado");
     
     NSLog(@"fecha está en el (%f,%f)",self.modificationDateLabel.frame.origin.x, self.modificationDateLabel.frame.origin.y);
     NSLog(@"dimensiones textview: (%f,%f)", self.textView.frame.size.width, self.textView.frame.size.height);
@@ -141,6 +140,43 @@
 - (void) notifyThatKeyboardWillDisappear:(NSNotification *) notification{
     // Extract user info
     //NSDictionary *dict = notification.userInfo;
+}
+
+
+/*
+    Sets up a toolbar to place at the top of the keyboard when its appears
+ */
+- (void) setupInputAccessoryView{
+    
+    // Create toolbar
+    UIToolbar *bar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
+    
+    // Add smile, separator and done buttons
+    UIBarButtonItem *separatorBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                                  target:nil
+                                                                                  action:nil];
+    UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                                target:self
+                                                                                action:@selector(dismissKeyboard:)];
+    UIBarButtonItem *smileBtn = [[UIBarButtonItem alloc] initWithTitle:@";-)"
+                                                                 style:UIBarButtonItemStylePlain
+                                                                target:self
+                                                                action:@selector(insertTitle:)];
+    
+    // Set as accessoryInputView
+    [bar setItems:@[smileBtn, separatorBtn, doneBtn]];
+    self.textView.inputAccessoryView = bar;
+}
+
+
+// Dismiss keyboard when done button pressed
+- (void) dismissKeyboard:(id) sender{
+    [self.view endEditing:YES];
+}
+
+// Insert the title of the sender as text in the input view
+- (void) insertTitle:(UIBarButtonItem *) sender{
+    [self.textView insertText:[NSString stringWithFormat:@"%@ ", sender.title]];
 }
 
 @end
