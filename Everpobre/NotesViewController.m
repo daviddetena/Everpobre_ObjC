@@ -12,6 +12,7 @@
 #import "NoteCellView.h"
 #import "Photo.h"
 #import "NoteViewController.h"
+#import "Notebook.h"
 
 static NSString *cellId = @"NoteCellId";
 
@@ -36,6 +37,12 @@ static NSString *cellId = @"NoteCellId";
     self.detailViewControllerClassName = NSStringFromClass([NoteViewController class]);
     
     self.title = NOTES_COLLECTION_TITLE;
+    
+    // Include a button to add a new note
+    UIBarButtonItem *addBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                            target:self
+                                                                            action:@selector(addNewNote:)];
+    self.navigationItem.rightBarButtonItem = addBtn;
 }
 
 
@@ -80,8 +87,15 @@ static NSString *cellId = @"NoteCellId";
 */
 
 #pragma mark - Utils
--(Note *) noteAtIndexPath:(NSIndexPath *)	indexPath{
+- (Note *) noteAtIndexPath:(NSIndexPath *)	indexPath{
     return (Note *) [self.fetchedResultsController objectAtIndexPath:indexPath];
+}
+
+
+- (void) addNewNote:(id) sender{
+    // Create instance of NoteVC with the "new note" init
+    NoteViewController *newNoteVC = [[NoteViewController alloc] initForNewNoteInNotebook:self.notebook];
+    [self.navigationController pushViewController:newNoteVC animated:YES];
 }
 
 @end

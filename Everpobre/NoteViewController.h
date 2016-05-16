@@ -11,6 +11,7 @@
 #import "DetailViewController.h"
 
 @class Note;
+@class Notebook;
 
 
 @interface NoteViewController : UIViewController<DetailViewController>
@@ -21,6 +22,10 @@
 @property (weak, nonatomic) IBOutlet UIImageView *photoView;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
+
+
+#pragma mark - Init
+-(id) initForNewNoteInNotebook:(Notebook *) notebook;
 
 
 @end

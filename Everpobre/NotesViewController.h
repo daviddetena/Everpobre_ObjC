@@ -7,7 +7,11 @@
 //
 
 #import "AGTCoreDataCollectionViewController.h"
+@class Notebook;
 
 @interface NotesViewController : AGTCoreDataCollectionViewController
+
+#pragma mark - Properties
+@property(nonatomic, strong) Notebook *notebook;
 
 @end

@@ -9,9 +9,12 @@
 #import "NoteViewController.h"
 #import "Note.h"
 #import "Photo.h"
+#import "Notebook.h"
 
 @interface NoteViewController ()
 @property (nonatomic, strong) Note *model;
+@property (nonatomic) BOOL isNew;
+@property (nonatomic) BOOL deleteCurrentNote;
 @end
 
 @implementation NoteViewController
@@ -24,6 +27,14 @@
     }
     return self;
 }
+
+// Create new empty notebook and then call the designated initializer
+-(id) initForNewNoteInNotebook:(Notebook *) notebook{
+    Note *newNote = [Note noteWithName:@"" notebook:notebook context:notebook.managedObjectContext];
+    _isNew = YES;
+    return [self initWithModel:newNote];
+}
+
 
 #pragma mark - View lifecycle
 // Model -> View
@@ -46,15 +57,29 @@
     
     [self startObservingKeyboard];
     [self setupInputAccessoryView];
+    
+    // If this is a new note we need an edition mode to cancel (delete) the current note and pops the VC
+    if (self.isNew) {
+        UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                                                   target:self
+                                                                                   action:@selector(cancelNote:)];
+        self.navigationItem.rightBarButtonItem = cancelBtn;
+    }
 }
 
 
 -(void) viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     
-    // Sync changes from view to model
-    self.model.text = self.textView.text;
-    self.model.photo.image = self.photoView.image;
+    if (self.deleteCurrentNote) {
+        // Delete note if we are in a new note
+        [self.model.managedObjectContext deleteObject:self.model];
+    }
+    else{
+        // Sync changes from view to model
+        self.model.text = self.textView.text;
+        self.model.photo.image = self.photoView.image;
+    }
     
     [self stopObservingKeyboard];
 }
@@ -66,6 +91,14 @@
 -(BOOL) shouldAutorotate{
     return NO;
 }
+
+
+- (void) cancelNote:(id) sender{
+    // Mark current note as "to be deleted" and pop VC
+    self.deleteCurrentNote = YES;
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 
 
 #pragma mark - Keyboard

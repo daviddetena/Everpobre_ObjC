@@ -112,6 +112,10 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
     // Create notes controller
     NotesViewController *notesVC = [NotesViewController coreDataCollectionViewControllerWithFetchedResultsController:fetchedRC
                                                                                                                layout:layout];
+    
+    // Set notebook for the note
+    notesVC.notebook = [self notebookAtIndexPath:indexPath];
+    
     // Push controller
     [self.navigationController pushViewController:notesVC
                                          animated:YES];
