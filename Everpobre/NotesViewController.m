@@ -12,6 +12,7 @@
 #import "NoteCellView.h"
 #import "Photo.h"
 #import "NoteViewController.h"
+#import "NoteTableViewController.h"
 #import "Notebook.h"
 
 static NSString *cellId = @"NoteCellId";
@@ -33,8 +34,9 @@ static NSString *cellId = @"NoteCellId";
     // Setup UI
     self.collectionView.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1];
     
-    // Set detailVC class name
-    self.detailViewControllerClassName = NSStringFromClass([NoteViewController class]);
+    // Set detailVC class name (choose from NoteVC or NoteTableVC)
+    //self.detailViewControllerClassName = NSStringFromClass([NoteViewController class]);
+    self.detailViewControllerClassName = NSStringFromClass([NoteTableViewController class]);
     
     self.title = NOTES_COLLECTION_TITLE;
     
@@ -94,7 +96,9 @@ static NSString *cellId = @"NoteCellId";
 
 - (void) addNewNote:(id) sender{
     // Create instance of NoteVC with the "new note" init
-    NoteViewController *newNoteVC = [[NoteViewController alloc] initForNewNoteInNotebook:self.notebook];
+    // Decide if we want to use NoteVC or NoteTableVC for displaying the note details
+    //NoteViewController *newNoteVC = [[NoteViewController alloc] initForNewNoteInNotebook:self.notebook];
+    NoteTableViewController *newNoteVC = [[NoteTableViewController alloc] initForNewNoteInNotebook:self.notebook];
     [self.navigationController pushViewController:newNoteVC animated:YES];
 }
 

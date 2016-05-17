@@ -263,8 +263,10 @@
     // Grab the model
     id detailModel = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
-    // Create detail VC (implementing the DetailViewController protocol) with the class name 
-    UIViewController<DetailViewController> *detailVC = [[NSClassFromString(self.detailViewControllerClassName) alloc] initWithModel:detailModel];
+    // Create detail VC (implementing the DetailViewController protocol) with the class name
+    // Choose from NoteVC or NoteTableVC to display a note details
+    //UIViewController<DetailViewController> *detailVC = [[NSClassFromString(self.detailViewControllerClassName) alloc] initWithModel:detailModel];
+    UITableViewController<DetailViewController> *detailVC = [[NSClassFromString(self.detailViewControllerClassName) alloc] initWithModel:detailModel];
     
     // Push
     [self.navigationController pushViewController:detailVC animated:YES];

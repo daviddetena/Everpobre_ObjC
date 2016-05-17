@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5901FD281CEB98E9000D345B /* NoteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5901FD261CEB98E9000D345B /* NoteTableViewController.m */; };
+		5901FD291CEB98E9000D345B /* NoteTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5901FD271CEB98E9000D345B /* NoteTableViewController.xib */; };
 		5924566A1CC76C4C00C5450B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 592456691CC76C4C00C5450B /* main.m */; };
 		5924566D1CC76C4C00C5450B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5924566C1CC76C4C00C5450B /* AppDelegate.m */; };
 		5924566F1CC76C4C00C5450B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5924566E1CC76C4C00C5450B /* Assets.xcassets */; };
@@ -37,6 +39,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5901FD251CEB98E9000D345B /* NoteTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteTableViewController.h; sourceTree = "<group>"; };
+		5901FD261CEB98E9000D345B /* NoteTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteTableViewController.m; sourceTree = "<group>"; };
+		5901FD271CEB98E9000D345B /* NoteTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteTableViewController.xib; sourceTree = "<group>"; };
 		592456651CC76C4C00C5450B /* Everpobre.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Everpobre.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		592456691CC76C4C00C5450B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5924566B1CC76C4C00C5450B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -183,6 +188,9 @@
 				59F23B401CE5C94100201206 /* NoteViewController.h */,
 				59F23B411CE5C94100201206 /* NoteViewController.m */,
 				59F23B421CE5C94100201206 /* NoteViewController.xib */,
+				5901FD251CEB98E9000D345B /* NoteTableViewController.h */,
+				5901FD261CEB98E9000D345B /* NoteTableViewController.m */,
+				5901FD271CEB98E9000D345B /* NoteTableViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -310,6 +318,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5901FD291CEB98E9000D345B /* NoteTableViewController.xib in Resources */,
 				59BF64ED1CE0F5A2000F977F /* NoteCollectionCellView.xib in Resources */,
 				59F33A221CCAB1F000CAAA81 /* NotebookCellView.xib in Resources */,
 				59838BE31CE1CD6B00A67E5A /* noImage.png in Resources */,
@@ -346,6 +355,7 @@
 				59B9646C1CC841CA00F4F700 /* _NamedEntity.m in Sources */,
 				59B9646E1CC841CA00F4F700 /* _Notebook.m in Sources */,
 				5924567F1CC77F0C00C5450B /* Model.xcdatamodeld in Sources */,
+				5901FD281CEB98E9000D345B /* NoteTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10117"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NoteTableViewController">
+            <connections>
+                <outlet property="mapView" destination="kFv-jw-bHi" id="KdD-GW-hnX"/>
+                <outlet property="modificationDateCell" destination="6UE-8X-1s1" id="w26-i2-brA"/>
+                <outlet property="modificationDateLabel" destination="Qku-iI-VGD" id="RQl-a1-EGc"/>
+                <outlet property="nameCell" destination="kcf-ls-vMR" id="ZIE-Oa-G21"/>
+                <outlet property="nameTextField" destination="AkT-2O-1mP" id="T6h-No-lkY"/>
+                <outlet property="photoAndMapCell" destination="Ms7-zF-9gS" id="Rhs-Hy-Oh2"/>
+                <outlet property="photoView" destination="oBF-cU-qgQ" id="cBr-7w-Rs9"/>
+                <outlet property="textCell" destination="5yl-XA-YV4" id="DVB-F0-ClW"/>
+                <outlet property="textView" destination="Eck-63-LiB" id="ksi-5X-deE"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableView opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" bouncesZoom="NO" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="dataSource" destination="-1" id="Tng-2m-Rnh"/>
+                <outlet property="delegate" destination="-1" id="9aC-8N-iBw"/>
+            </connections>
+            <point key="canvasLocation" x="622" y="375"/>
+        </tableView>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="40" id="6UE-8X-1s1">
+            <rect key="frame" x="0.0" y="0.0" width="463" height="40"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6UE-8X-1s1" id="6To-Vb-Xea">
+                <rect key="frame" x="0.0" y="0.0" width="463" height="39"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qku-iI-VGD">
+                        <rect key="frame" x="0.0" y="0.0" width="463" height="39"/>
+                        <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Qku-iI-VGD" firstAttribute="leading" secondItem="6To-Vb-Xea" secondAttribute="leading" id="Hvr-1m-WJz"/>
+                    <constraint firstAttribute="bottom" secondItem="Qku-iI-VGD" secondAttribute="bottom" id="SvT-9B-Yz6"/>
+                    <constraint firstAttribute="trailing" secondItem="Qku-iI-VGD" secondAttribute="trailing" id="UKD-dp-pkY"/>
+                    <constraint firstItem="Qku-iI-VGD" firstAttribute="top" secondItem="6To-Vb-Xea" secondAttribute="top" id="fXm-Yr-FDt"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="1222.5" y="90"/>
+        </tableViewCell>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="kcf-ls-vMR">
+            <rect key="frame" x="0.0" y="0.0" width="462" height="60"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kcf-ls-vMR" id="Gnj-UZ-zLg">
+                <rect key="frame" x="0.0" y="0.0" width="462" height="59"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type a name" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="AkT-2O-1mP">
+                        <rect key="frame" x="8" y="15" width="446" height="30"/>
+                        <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
+                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                    </textField>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="AkT-2O-1mP" firstAttribute="trailing" secondItem="Gnj-UZ-zLg" secondAttribute="trailingMargin" id="Tlo-gr-4ha"/>
+                    <constraint firstItem="AkT-2O-1mP" firstAttribute="centerY" secondItem="Gnj-UZ-zLg" secondAttribute="centerY" id="zre-yE-7kT"/>
+                    <constraint firstItem="AkT-2O-1mP" firstAttribute="leading" secondItem="Gnj-UZ-zLg" secondAttribute="leadingMargin" id="zsU-Bu-5f2"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="1223" y="221"/>
+        </tableViewCell>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="200" id="Ms7-zF-9gS">
+            <rect key="frame" x="0.0" y="0.0" width="462" height="200"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ms7-zF-9gS" id="faX-ri-sUe">
+                <rect key="frame" x="0.0" y="0.0" width="462" height="199"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oBF-cU-qgQ">
+                        <rect key="frame" x="0.0" y="0.0" width="234" height="199"/>
+                    </imageView>
+                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="kFv-jw-bHi">
+                        <rect key="frame" x="234" y="0.0" width="234" height="199"/>
+                    </mapView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="oBF-cU-qgQ" firstAttribute="bottom" secondItem="kFv-jw-bHi" secondAttribute="bottom" id="2EU-QY-mzp"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="kFv-jw-bHi" secondAttribute="trailing" constant="-14" id="3wJ-M6-b0q"/>
+                    <constraint firstItem="oBF-cU-qgQ" firstAttribute="leading" secondItem="faX-ri-sUe" secondAttribute="leading" id="Cja-e9-Xzk"/>
+                    <constraint firstItem="kFv-jw-bHi" firstAttribute="leading" secondItem="oBF-cU-qgQ" secondAttribute="trailing" id="DPd-53-Tqj"/>
+                    <constraint firstItem="oBF-cU-qgQ" firstAttribute="top" secondItem="faX-ri-sUe" secondAttribute="top" id="P9H-1K-mUl"/>
+                    <constraint firstAttribute="bottom" secondItem="oBF-cU-qgQ" secondAttribute="bottom" id="duD-gt-Jos"/>
+                    <constraint firstItem="oBF-cU-qgQ" firstAttribute="top" secondItem="kFv-jw-bHi" secondAttribute="top" id="i5W-P8-rUp"/>
+                    <constraint firstItem="oBF-cU-qgQ" firstAttribute="width" secondItem="kFv-jw-bHi" secondAttribute="width" id="ohD-um-394"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="1223" y="433"/>
+        </tableViewCell>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="200" id="5yl-XA-YV4">
+            <rect key="frame" x="0.0" y="0.0" width="462" height="200"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5yl-XA-YV4" id="0wu-i7-rLP">
+                <rect key="frame" x="0.0" y="0.0" width="462" height="199"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Eck-63-LiB">
+                        <rect key="frame" x="0.0" y="0.0" width="462" height="299"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="299" id="r7g-GC-5Ft"/>
+                        </constraints>
+                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                        <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Eck-63-LiB" firstAttribute="leading" secondItem="0wu-i7-rLP" secondAttribute="leading" id="2hs-yp-TDu"/>
+                    <constraint firstItem="Eck-63-LiB" firstAttribute="top" secondItem="0wu-i7-rLP" secondAttribute="top" id="MHS-nj-hVm"/>
+                    <constraint firstAttribute="trailing" secondItem="Eck-63-LiB" secondAttribute="trailing" id="rwy-Gb-0Dn"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="1223" y="703"/>
+        </tableViewCell>
+    </objects>
+</document>
