@@ -173,6 +173,52 @@
 }
 
 
+/*
+    Detect faces, select one and zoom it
+ */
+- (IBAction)zoomToFace:(id)sender {
+    NSArray *features = [self featuresInImage:self.photoView.image];
+    
+    if (features) {
+        // Take the last of the faces found
+        CIFeature *face = [features lastObject];
+        CGRect faceBounds = [face bounds];
+        
+        // Create a new image with the "face" from the original
+        CIImage *image = [CIImage imageWithCGImage:self.photoView.image.CGImage];
+        CIImage *imageCrop = [image imageByCroppingToRect:faceBounds];
+        
+        UIImage *newImage = [UIImage imageWithCIImage:imageCrop];
+        
+        // Assign zoomed image to photoView
+        self.photoView.image = newImage;
+    }
+    else{
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"No faces detected" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *doneAction = [UIAlertAction actionWithTitle:@"Done" style:UIAlertActionStyleCancel handler:nil];
+        [alert addAction:doneAction];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+}
+
+
+#pragma mark - Utils
+// This method returns an array of features detected in an image, faces in this case
+- (NSArray *) featuresInImage:(UIImage *) image{
+    CIContext *context = [CIContext contextWithOptions:nil];
+    CIDetector *detector = [CIDetector detectorOfType:CIDetectorTypeFace
+                                              context:context
+                                              options:@{CIDetectorAccuracy:CIDetectorAccuracyHigh}];
+    
+    CIImage *img = [CIImage imageWithCGImage:image.CGImage];
+    NSArray *features = [detector featuresInImage:img];
+    if ([features count]) {
+        return features;
+    }
+    return nil;
+}
+
+
 #pragma mark - UIImagePickerControllerDelegate
 
 -(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
