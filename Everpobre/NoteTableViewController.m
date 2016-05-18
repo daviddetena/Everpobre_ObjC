@@ -7,6 +7,7 @@
 //
 
 #import "NoteTableViewController.h"
+#import "PhotoViewController.h"
 #import "Note.h"
 #import "Notebook.h"
 #import "Photo.h"
@@ -85,7 +86,15 @@
         self.navigationItem.rightBarButtonItem = cancelBtn;
     }
     
+    
+    // Set delegates
     self.nameTextField.delegate = self;
+    
+    // Add gesture recognizer for displaying PhotoVC when tapping the image
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                          action:@selector(displayDetailPhoto:)];
+    
+    [self.photoView addGestureRecognizer:tap];
 }
 
 
@@ -118,6 +127,21 @@
     // Mark current note as "to be deleted" and pop VC
     self.deleteCurrentNote = YES;
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+#pragma mark - Actions
+
+// Present PhotoVC
+- (void) displayDetailPhoto:(id) sender{
+    // Make sure a photo (even empty) is passed through
+    if (self.model.photo == nil) {
+        self.model.photo = [Photo photoWithImage:nil context:self.model.managedObjectContext];
+    }
+    PhotoViewController *photoVC = [[PhotoViewController alloc]
+                                    initWithModel:self.model.photo];
+    
+    [self.navigationController pushViewController:photoVC animated:YES];
 }
 
 
