@@ -127,19 +127,49 @@
     [filterOld setDefaults];
     [filterOld setValue:inputImage forKey:kCIInputImageKey];
     
+    // Apply another filter, create vignette filter
+    CIFilter *vignetteFilter = [CIFilter filterWithName:@"CIVignette"];
+    [vignetteFilter setDefaults];
+    // Apply 12pts of intensity on filter
+    [vignetteFilter setValue:@12 forKey:kCIInputIntensityKey];
+    
+    // Chain filters (output from "old" filter is the input for "vignette" filter)
+    [vignetteFilter setValue:filterOld.outputImage forKey:kCIInputImageKey];
+    
     // Get output image
-    CIImage *outputImage = filterOld.outputImage;
+    CIImage *outputImage = vignetteFilter.outputImage;
     
-    // Apply the filter on the whole output image
-    CGImageRef result = [context createCGImage:outputImage
-                                      fromRect:[outputImage extent]];
     
-    // Save new image
-    UIImage *newImage = [UIImage imageWithCGImage:result];
-    self.photoView.image = newImage;
+    // Show alert with an UIActivityView animating while processing in the background
+    UIActivityIndicatorView *activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    activityView.hidesWhenStopped = YES;
+    activityView.frame = CGRectMake(10, 5, 50, 50);
+    [activityView startAnimating];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil
+                                                                   message:@"Applying filter..."
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    [alert.view addSubview:activityView];
+    [self presentViewController:alert animated:YES completion:nil];
     
-    // Release CGImageRef result
-    CGImageRelease(result);
+    // Apply the filter on the whole output image (in background, it takes a few moments...)
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        CGImageRef result = [context createCGImage:outputImage
+                                          fromRect:[outputImage extent]];
+        
+        // Refresh UI in main queue
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // Stop activity view and hide the alert
+            [activityView stopAnimating];
+            [alert dismissViewControllerAnimated:YES completion:nil];            
+            
+            // Save new image
+            UIImage *newImage = [UIImage imageWithCGImage:result];
+            self.photoView.image = newImage;
+            
+            // Release CGImageRef result
+            CGImageRelease(result);
+        });
+    });
 }
 
 
