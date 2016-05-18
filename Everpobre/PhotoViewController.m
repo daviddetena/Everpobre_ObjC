@@ -8,6 +8,7 @@
 
 #import "PhotoViewController.h"
 #import "Photo.h"
+@import CoreImage;
 
 @interface PhotoViewController ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -80,6 +81,7 @@
                      }];
 }
 
+
 - (IBAction)deletePhoto:(id)sender {
     
     // Save photo's initial status
@@ -109,6 +111,35 @@
     
     // Delete photo from model
     self.model.image = nil;
+}
+
+
+- (IBAction)applyVintageFilter:(id)sender {
+    
+    // Create a CIContext
+    CIContext *context = [CIContext contextWithOptions:nil];
+    
+    // Create an input CIImage from our model image
+    CIImage *inputImage = [CIImage imageWithCGImage:self.model.image.CGImage];
+    
+    // Create a filter and set defaults (some with KVC)
+    CIFilter *filterOld = [CIFilter filterWithName:@"CIFalseColor"];
+    [filterOld setDefaults];
+    [filterOld setValue:inputImage forKey:kCIInputImageKey];
+    
+    // Get output image
+    CIImage *outputImage = filterOld.outputImage;
+    
+    // Apply the filter on the whole output image
+    CGImageRef result = [context createCGImage:outputImage
+                                      fromRect:[outputImage extent]];
+    
+    // Save new image
+    UIImage *newImage = [UIImage imageWithCGImage:result];
+    self.photoView.image = newImage;
+    
+    // Release CGImageRef result
+    CGImageRelease(result);
 }
 
 

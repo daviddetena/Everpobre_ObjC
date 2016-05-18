@@ -17,5 +17,6 @@
 #pragma mark - Actions
 - (IBAction)takePhoto:(id)sender;
 - (IBAction)deletePhoto:(id)sender;
+- (IBAction)applyVintageFilter:(id)sender;
 
 @end
