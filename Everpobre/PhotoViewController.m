@@ -103,6 +103,7 @@
                          // Restore old bounds for the next time
                          self.photoView.bounds = oldBounds;
                          
+                         // Restore Affine Transform
                          self.photoView.transform = CGAffineTransformIdentity;
                      }];
     
