@@ -81,6 +81,33 @@
 }
 
 - (IBAction)deletePhoto:(id)sender {
+    
+    // Save photo's initial status
+    CGRect oldBounds = self.photoView.bounds;
+    
+    // Delete photo from the view
+    [UIView animateWithDuration:0.6
+                          delay:0
+                        options:0
+                     animations:^{
+                         // Reduce size while centering
+                         self.photoView.bounds = CGRectZero;
+                         self.photoView.alpha = 0;
+                         
+                         // Affine transform
+                         self.photoView.transform = CGAffineTransformMakeRotation(M_2_PI);
+                         
+                     } completion:^(BOOL finished) {
+                         self.photoView.image = nil;
+                         self.photoView.alpha = 1;
+                         // Restore old bounds for the next time
+                         self.photoView.bounds = oldBounds;
+                         
+                         self.photoView.transform = CGAffineTransformIdentity;
+                     }];
+    
+    // Delete photo from model
+    self.model.image = nil;
 }
 
 
