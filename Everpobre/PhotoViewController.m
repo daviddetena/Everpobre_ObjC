@@ -14,6 +14,7 @@
 
 #pragma mark - Properties
 @property (nonatomic, strong) Photo *model;
+@property (nonatomic) BOOL isCameraSourceSelected;
 
 @end
 
@@ -30,6 +31,7 @@
     if (self = [super initWithNibName:nil
                                bundle:nil]) {
         _model = model;
+        self.title = @"Note image";
     }
     return self;
 }
@@ -58,27 +60,54 @@
     
     // Create UIImagePicker
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    
-    // Configure it
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        // Device has camera
-        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    }
-    else{
-        // Device has not camera => use camera roll
-        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    }
     picker.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    picker.editing = NO;
     
     // Set delegate
     picker.delegate = self;
     
-    // Display it
-    [self presentViewController:picker
-                       animated:YES
-                     completion:^{
-                         
-                     }];
+    // Configure it
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        // Device has camera => Present Action sheet
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil
+                                                                       message:nil
+                                                                preferredStyle:UIAlertControllerStyleActionSheet];
+        
+        // Action for taking a new photo
+        UIAlertAction *cameraAction = [UIAlertAction actionWithTitle:@"Camera"
+                                                               style:UIAlertActionStyleDefault
+                                                             handler:^(UIAlertAction * _Nonnull action) {
+                                                                 picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+                                                                 self.isCameraSourceSelected = YES;
+                                                                 [self presentViewController:picker animated:YES completion:nil];
+                                                             }];
+        
+        // Action for selecting a previous photo
+        UIAlertAction *cameraRollAction = [UIAlertAction actionWithTitle:@"Photo Library"
+                                                                   style:UIAlertActionStyleDefault
+                                                                 handler:^(UIAlertAction * _Nonnull action) {
+                                                                     picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+                                                                     [self presentViewController:picker animated:YES completion:nil];
+                                                                 }];
+        
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                                   style:UIAlertActionStyleCancel
+                                                                 handler:nil];
+        
+        [alert addAction:cameraAction];
+        [alert addAction:cameraRollAction];
+        [alert addAction:cancelAction];
+        [self presentViewController:alert animated:YES completion:nil];        
+    }
+    else{
+        // Device has not camera => use camera roll
+        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        [self presentViewController:picker
+                           animated:YES
+                         completion:^{
+                             
+                         }];
+    }
 }
 
 
@@ -218,6 +247,118 @@
     return nil;
 }
 
+- (UIImage *) scaleAndRotateImage: (UIImage *)image{
+    
+    // Max resolution = device screen size * device screen scale
+    CGSize iOSDeviceScreenSize = [[UIScreen mainScreen] bounds].size;
+    CGFloat scale = [[UIScreen mainScreen] scale];
+    int kMaxResolution = iOSDeviceScreenSize.width * (int)scale;
+
+    
+    CGImageRef imgRef = image.CGImage;
+    
+    CGFloat width = CGImageGetWidth(imgRef);
+    CGFloat height = CGImageGetHeight(imgRef);
+    
+    CGAffineTransform transform = CGAffineTransformIdentity;
+    CGRect bounds = CGRectMake(0, 0, width, height);
+    if (width > kMaxResolution || height > kMaxResolution) {
+        CGFloat ratio = width/height;
+        if (ratio > 1) {
+            bounds.size.width = kMaxResolution;
+            bounds.size.height = bounds.size.width / ratio;
+        }
+        else {
+            bounds.size.height = kMaxResolution;
+            bounds.size.width = bounds.size.height * ratio;
+        }
+    }
+    
+    CGFloat scaleRatio = bounds.size.width / width;
+    CGSize imageSize = CGSizeMake(CGImageGetWidth(imgRef),      CGImageGetHeight(imgRef));
+    CGFloat boundHeight;
+    UIImageOrientation orient = image.imageOrientation;
+    switch(orient)
+    {
+        case UIImageOrientationUp: //EXIF = 1
+            transform = CGAffineTransformIdentity;
+            break;
+            
+        case UIImageOrientationUpMirrored: //EXIF = 2
+            transform = CGAffineTransformMakeTranslation(imageSize.width, 0.0);
+            transform = CGAffineTransformScale(transform, -1.0, 1.0);
+            break;
+            
+        case UIImageOrientationDown: //EXIF = 3
+            transform = CGAffineTransformMakeTranslation(imageSize.width, imageSize.height);
+            transform = CGAffineTransformRotate(transform, M_PI);
+            break;
+            
+        case UIImageOrientationDownMirrored: //EXIF = 4
+            transform = CGAffineTransformMakeTranslation(0.0, imageSize.height);
+            transform = CGAffineTransformScale(transform, 1.0, -1.0);
+            break;
+            
+        case UIImageOrientationLeftMirrored: //EXIF = 5
+            boundHeight = bounds.size.height;
+            bounds.size.height = bounds.size.width;
+            bounds.size.width = boundHeight;
+            transform = CGAffineTransformMakeTranslation(imageSize.height, imageSize.width);
+            transform = CGAffineTransformScale(transform, -1.0, 1.0);
+            transform = CGAffineTransformRotate(transform, 3.0 * M_PI / 2.0);
+            break;
+            
+        case UIImageOrientationLeft: //EXIF = 6
+            boundHeight = bounds.size.height;
+            bounds.size.height = bounds.size.width;
+            bounds.size.width = boundHeight;
+            transform = CGAffineTransformMakeTranslation(0.0, imageSize.width);
+            transform = CGAffineTransformRotate(transform, 3.0 * M_PI / 2.0);
+            break;
+            
+        case UIImageOrientationRightMirrored: //EXIF = 7
+            boundHeight = bounds.size.height;
+            bounds.size.height = bounds.size.width;
+            bounds.size.width = boundHeight;
+            transform = CGAffineTransformMakeScale(-1.0, 1.0);
+            transform = CGAffineTransformRotate(transform, M_PI / 2.0);
+            break;
+            
+        case UIImageOrientationRight: //EXIF = 8
+            boundHeight = bounds.size.height;
+            bounds.size.height = bounds.size.width;
+            bounds.size.width = boundHeight;
+            transform = CGAffineTransformMakeTranslation(imageSize.height, 0.0);
+            transform = CGAffineTransformRotate(transform, M_PI / 2.0);
+            break;
+            
+        default:
+            [NSException raise:NSInternalInconsistencyException format:@"Invalid image orientation"];
+    }
+    
+    UIGraphicsBeginImageContext(bounds.size);
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    if (orient == UIImageOrientationRight || orient == UIImageOrientationLeft)
+    {
+        CGContextScaleCTM(context, -scaleRatio, scaleRatio);
+        CGContextTranslateCTM(context, -height, 0);
+    }
+    else {
+        CGContextScaleCTM(context, scaleRatio, -scaleRatio);
+        CGContextTranslateCTM(context, 0, -height);
+    }
+    
+    CGContextConcatCTM(context, transform);
+    
+    CGContextDrawImage(UIGraphicsGetCurrentContext(), CGRectMake(0, 0, width, height), imgRef);
+    UIImage *imageCopy = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return imageCopy;
+}
+
 
 #pragma mark - UIImagePickerControllerDelegate
 
@@ -225,13 +366,17 @@
     
     UIImage *img = [info objectForKey:UIImagePickerControllerOriginalImage];
     
-    // High memory consumption => pass quickly to core data and trash it
-    self.model.image = img;
+    // Update model so the photoView is updated in viewWillDisappear
+    self.model.image = [self scaleAndRotateImage:img];
     
     // Dismiss picker
     [self dismissViewControllerAnimated:YES completion:^{
         
     }];
+}
+
+-(void) imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 

@@ -27,7 +27,7 @@
     self.model = [AGTCoreDataStack coreDataStackWithModelName:@"Model"];
     
     //[self playWithData];
-    //[self autoSave];
+    [self autoSave];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
