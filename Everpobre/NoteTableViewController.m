@@ -7,6 +7,7 @@
 //
 
 #import "NoteTableViewController.h"
+#import "PhotoViewController.h"
 #import "Note.h"
 #import "Notebook.h"
 #import "Photo.h"
@@ -133,7 +134,14 @@
 
 // Present PhotoVC
 - (void) displayDetailPhoto:(id) sender{
-    NSLog(@"hello");
+    // Make sure a photo (even empty) is passed through
+    if (self.model.photo == nil) {
+        self.model.photo = [Photo photoWithImage:nil context:self.model.managedObjectContext];
+    }
+    PhotoViewController *photoVC = [[PhotoViewController alloc]
+                                    initWithModel:self.model.photo];
+    
+    [self.navigationController pushViewController:photoVC animated:YES];
 }
 
 

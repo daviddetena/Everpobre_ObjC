@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DetailViewController.h"
 
-@interface PhotoViewController : UIViewController
+@interface PhotoViewController : UIViewController<DetailViewController>
 
 #pragma mark - Properties
 @property (weak, nonatomic) IBOutlet UIImageView *photoView;

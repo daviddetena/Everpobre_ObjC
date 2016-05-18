@@ -18,6 +18,9 @@
             <subviews>
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oN1-pL-LD9">
                     <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="SVv-Bv-GVA"/>
+                    </constraints>
                     <items>
                         <barButtonItem systemItem="camera" id="d3x-62-lZu">
                             <connections>
@@ -41,13 +44,14 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="oN1-pL-LD9" firstAttribute="top" secondItem="zHm-3m-tfr" secondAttribute="bottom" id="6ku-gh-IW3"/>
-                <constraint firstItem="zHm-3m-tfr" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="CsR-Qm-hes"/>
-                <constraint firstItem="oN1-pL-LD9" firstAttribute="leading" secondItem="zHm-3m-tfr" secondAttribute="leading" id="Mj7-Zg-t6j"/>
-                <constraint firstItem="oN1-pL-LD9" firstAttribute="trailing" secondItem="zHm-3m-tfr" secondAttribute="trailing" id="Quk-Aj-zDX"/>
-                <constraint firstItem="oN1-pL-LD9" firstAttribute="top" secondItem="zHm-3m-tfr" secondAttribute="bottom" id="YOM-xK-ere"/>
-                <constraint firstAttribute="bottom" secondItem="oN1-pL-LD9" secondAttribute="bottom" id="ZtZ-N8-HTS"/>
-                <constraint firstItem="zHm-3m-tfr" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="jL1-nL-13q"/>
+                <constraint firstItem="oN1-pL-LD9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="52E-Xh-HcQ"/>
+                <constraint firstAttribute="bottom" secondItem="oN1-pL-LD9" secondAttribute="bottom" id="aJU-Pm-mBt"/>
+                <constraint firstItem="zHm-3m-tfr" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="kZf-dZ-xaq"/>
+                <constraint firstItem="zHm-3m-tfr" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="lAZ-eh-3qo"/>
+                <constraint firstAttribute="trailing" secondItem="oN1-pL-LD9" secondAttribute="trailing" id="lO8-KG-3Lx"/>
+                <constraint firstItem="oN1-pL-LD9" firstAttribute="top" secondItem="zHm-3m-tfr" secondAttribute="bottom" id="qLh-GH-jFf"/>
+                <constraint firstItem="zHm-3m-tfr" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="qyJ-er-Ylc"/>
+                <constraint firstItem="oN1-pL-LD9" firstAttribute="top" secondItem="zHm-3m-tfr" secondAttribute="bottom" id="wYz-Do-3lX"/>
             </constraints>
         </view>
     </objects>
