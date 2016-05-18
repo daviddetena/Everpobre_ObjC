@@ -85,7 +85,15 @@
         self.navigationItem.rightBarButtonItem = cancelBtn;
     }
     
+    
+    // Set delegates
     self.nameTextField.delegate = self;
+    
+    // Add gesture recognizer for displaying PhotoVC when tapping the image
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                          action:@selector(displayDetailPhoto:)];
+    
+    [self.photoView addGestureRecognizer:tap];
 }
 
 
@@ -118,6 +126,14 @@
     // Mark current note as "to be deleted" and pop VC
     self.deleteCurrentNote = YES;
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+#pragma mark - Actions
+
+// Present PhotoVC
+- (void) displayDetailPhoto:(id) sender{
+    NSLog(@"hello");
 }
 
 
