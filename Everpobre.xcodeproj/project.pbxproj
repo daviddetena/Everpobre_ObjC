@@ -17,6 +17,11 @@
 		5924567F1CC77F0C00C5450B /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5924567D1CC77F0C00C5450B /* Model.xcdatamodeld */; };
 		592F8F6B1CE1C05600FD788C /* AGTCoreDataCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 592F8F6A1CE1C05600FD788C /* AGTCoreDataCollectionViewController.m */; };
 		592F8F6E1CE1C0CB00FD788C /* NotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 592F8F6D1CE1C0CB00FD788C /* NotesViewController.m */; };
+		595842EC1CEDDBFD00B10DB3 /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = 595842E91CEDDBFD00B10DB3 /* location.png */; };
+		595842ED1CEDDBFD00B10DB3 /* location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 595842EA1CEDDBFD00B10DB3 /* location@2x.png */; };
+		595842EE1CEDDBFD00B10DB3 /* location@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 595842EB1CEDDBFD00B10DB3 /* location@3x.png */; };
+		5958D0871CEDCB3E002688FE /* _Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 5958D0861CEDCB3E002688FE /* _Location.m */; };
+		5958D08D1CEDCFAD002688FE /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 5958D08C1CEDCFAD002688FE /* Location.m */; };
 		59838BE31CE1CD6B00A67E5A /* noImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 59838BE21CE1CD6B00A67E5A /* noImage.png */; };
 		5988C2251CEC5BB100B47E2D /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5988C2231CEC5BB100B47E2D /* PhotoViewController.m */; };
 		5988C2261CEC5BB100B47E2D /* PhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5988C2241CEC5BB100B47E2D /* PhotoViewController.xib */; };
@@ -33,8 +38,6 @@
 		59B964711CC841CA00F4F700 /* Notebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B9646B1CC841CA00F4F700 /* Notebook.m */; };
 		59BF64ED1CE0F5A2000F977F /* NoteCollectionCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59BF64EC1CE0F5A2000F977F /* NoteCollectionCellView.xib */; };
 		59BF64F01CE0F74F000F977F /* NoteCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BF64EF1CE0F74F000F977F /* NoteCellView.m */; };
-		59F23B431CE5C94100201206 /* NoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F23B411CE5C94100201206 /* NoteViewController.m */; };
-		59F23B441CE5C94100201206 /* NoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F23B421CE5C94100201206 /* NoteViewController.xib */; };
 		59F23B461CE5D45E00201206 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59F23B451CE5D45E00201206 /* MapKit.framework */; };
 		59F33A221CCAB1F000CAAA81 /* NotebookCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F33A211CCAB1EF00CAAA81 /* NotebookCellView.xib */; };
 		59F33A251CCAB3F000CAAA81 /* NotebookCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F33A241CCAB3F000CAAA81 /* NotebookCellView.m */; };
@@ -58,6 +61,14 @@
 		592F8F6A1CE1C05600FD788C /* AGTCoreDataCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGTCoreDataCollectionViewController.m; sourceTree = "<group>"; };
 		592F8F6C1CE1C0CB00FD788C /* NotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesViewController.h; sourceTree = "<group>"; };
 		592F8F6D1CE1C0CB00FD788C /* NotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesViewController.m; sourceTree = "<group>"; };
+		595842E91CEDDBFD00B10DB3 /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location.png; sourceTree = "<group>"; };
+		595842EA1CEDDBFD00B10DB3 /* location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location@2x.png"; sourceTree = "<group>"; };
+		595842EB1CEDDBFD00B10DB3 /* location@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location@3x.png"; sourceTree = "<group>"; };
+		5958D0841CEDCA79002688FE /* Model2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model2.xcdatamodel; sourceTree = "<group>"; };
+		5958D0851CEDCB3E002688FE /* _Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Location.h; sourceTree = "<group>"; };
+		5958D0861CEDCB3E002688FE /* _Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Location.m; sourceTree = "<group>"; };
+		5958D08B1CEDCFAD002688FE /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		5958D08C1CEDCFAD002688FE /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		59838BE21CE1CD6B00A67E5A /* noImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noImage.png; sourceTree = "<group>"; };
 		5988C2221CEC5BB100B47E2D /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
 		5988C2231CEC5BB100B47E2D /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
@@ -88,9 +99,6 @@
 		59BF64EC1CE0F5A2000F977F /* NoteCollectionCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteCollectionCellView.xib; sourceTree = "<group>"; };
 		59BF64EE1CE0F74F000F977F /* NoteCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteCellView.h; sourceTree = "<group>"; };
 		59BF64EF1CE0F74F000F977F /* NoteCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteCellView.m; sourceTree = "<group>"; };
-		59F23B401CE5C94100201206 /* NoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteViewController.h; sourceTree = "<group>"; };
-		59F23B411CE5C94100201206 /* NoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteViewController.m; sourceTree = "<group>"; };
-		59F23B421CE5C94100201206 /* NoteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteViewController.xib; sourceTree = "<group>"; };
 		59F23B451CE5D45E00201206 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		59F23B4A1CE5DC3200201206 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		59F33A211CCAB1EF00CAAA81 /* NotebookCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotebookCellView.xib; sourceTree = "<group>"; };
@@ -158,6 +166,8 @@
 				59B964721CC8428600F4F700 /* Machine */,
 				59B964661CC841CA00F4F700 /* NamedEntity.h */,
 				59B964671CC841CA00F4F700 /* NamedEntity.m */,
+				5958D08B1CEDCFAD002688FE /* Location.h */,
+				5958D08C1CEDCFAD002688FE /* Location.m */,
 				59B964681CC841CA00F4F700 /* Note.h */,
 				59B964691CC841CA00F4F700 /* Note.m */,
 				599230331CC93DD000568E9F /* Photo.h */,
@@ -174,6 +184,9 @@
 		59838BE11CE1CD5D00A67E5A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				595842E91CEDDBFD00B10DB3 /* location.png */,
+				595842EA1CEDDBFD00B10DB3 /* location@2x.png */,
+				595842EB1CEDDBFD00B10DB3 /* location@3x.png */,
 				59838BE21CE1CD6B00A67E5A /* noImage.png */,
 			);
 			name = Resources;
@@ -190,9 +203,6 @@
 				59AFE47D1CCA1A4F001E7782 /* NotebooksViewController.m */,
 				592F8F6C1CE1C0CB00FD788C /* NotesViewController.h */,
 				592F8F6D1CE1C0CB00FD788C /* NotesViewController.m */,
-				59F23B401CE5C94100201206 /* NoteViewController.h */,
-				59F23B411CE5C94100201206 /* NoteViewController.m */,
-				59F23B421CE5C94100201206 /* NoteViewController.xib */,
 				5901FD251CEB98E9000D345B /* NoteTableViewController.h */,
 				5901FD261CEB98E9000D345B /* NoteTableViewController.m */,
 				5901FD271CEB98E9000D345B /* NoteTableViewController.xib */,
@@ -215,6 +225,8 @@
 		59B964721CC8428600F4F700 /* Machine */ = {
 			isa = PBXGroup;
 			children = (
+				5958D0851CEDCB3E002688FE /* _Location.h */,
+				5958D0861CEDCB3E002688FE /* _Location.m */,
 				599230301CC93DC400568E9F /* _Photo.h */,
 				599230311CC93DC400568E9F /* _Photo.m */,
 				59B964601CC841CA00F4F700 /* _NamedEntity.h */,
@@ -330,9 +342,11 @@
 				5988C2261CEC5BB100B47E2D /* PhotoViewController.xib in Resources */,
 				59BF64ED1CE0F5A2000F977F /* NoteCollectionCellView.xib in Resources */,
 				59F33A221CCAB1F000CAAA81 /* NotebookCellView.xib in Resources */,
+				595842EE1CEDDBFD00B10DB3 /* location@3x.png in Resources */,
+				595842EC1CEDDBFD00B10DB3 /* location.png in Resources */,
 				59838BE31CE1CD6B00A67E5A /* noImage.png in Resources */,
 				5924566F1CC76C4C00C5450B /* Assets.xcassets in Resources */,
-				59F23B441CE5C94100201206 /* NoteViewController.xib in Resources */,
+				595842ED1CEDDBFD00B10DB3 /* location@2x.png in Resources */,
 				592456721CC76C4C00C5450B /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -352,8 +366,9 @@
 				59B964701CC841CA00F4F700 /* Note.m in Sources */,
 				5924567C1CC77B4E00C5450B /* AGTCoreDataStack.m in Sources */,
 				5924566D1CC76C4C00C5450B /* AppDelegate.m in Sources */,
-				59F23B431CE5C94100201206 /* NoteViewController.m in Sources */,
 				5988C2251CEC5BB100B47E2D /* PhotoViewController.m in Sources */,
+				5958D0871CEDCB3E002688FE /* _Location.m in Sources */,
+				5958D08D1CEDCFAD002688FE /* Location.m in Sources */,
 				59AFE4821CCA4198001E7782 /* UIViewController+Navigation.m in Sources */,
 				59B9646F1CC841CA00F4F700 /* NamedEntity.m in Sources */,
 				59AFE47E1CCA1A4F001E7782 /* NotebooksViewController.m in Sources */,
@@ -420,7 +435,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -458,7 +473,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -471,6 +486,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Everpobre/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.daviddetena.Everpobre;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -483,6 +499,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Everpobre/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.daviddetena.Everpobre;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -516,9 +533,10 @@
 		5924567D1CC77F0C00C5450B /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				5958D0841CEDCA79002688FE /* Model2.xcdatamodel */,
 				5924567E1CC77F0C00C5450B /* Model.xcdatamodel */,
 			);
-			currentVersion = 5924567E1CC77F0C00C5450B /* Model.xcdatamodel */;
+			currentVersion = 5958D0841CEDCA79002688FE /* Model2.xcdatamodel */;
 			name = Model.xcdatamodeld;
 			path = ../Model.xcdatamodeld;
 			sourceTree = "<group>";

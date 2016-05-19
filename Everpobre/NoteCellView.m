@@ -18,7 +18,7 @@
 
 #pragma mark - Class methods
 +(NSArray *) keys{
-    return @[@"title", @"modificationDate", @"photo.image"];
+    return @[@"name", @"modificationDate", @"photo.image", @"location", @"location.latitude", @"location.longitude", @"location.address"];
 }
 
 
@@ -41,6 +41,10 @@
 
 #pragma mark - View
 - (void) prepareForReuse{
+    for (NSString *key in [NoteCellView keys]) {
+        [self.note removeObserver:self forKeyPath:key];
+        
+    }
     self.note = nil;
     [self syncNoteWithView];
 }
@@ -66,6 +70,14 @@
         img = self.note.photo.image;
     }
     self.photoView.image = img;
+    
+    // Add location image if exists
+    if (self.note.hasLocation) {
+        self.locationView.image = [UIImage imageNamed:@"location.png"];
+    }
+    else{
+        self.locationView.image = nil;
+    }
 }
 
 

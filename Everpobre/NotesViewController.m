@@ -11,7 +11,6 @@
 #import "Note.h"
 #import "NoteCellView.h"
 #import "Photo.h"
-#import "NoteViewController.h"
 #import "NoteTableViewController.h"
 #import "Notebook.h"
 
