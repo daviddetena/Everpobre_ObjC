@@ -95,6 +95,12 @@
                                                                           action:@selector(displayDetailPhoto:)];
     
     [self.photoView addGestureRecognizer:tap];
+    
+    // Add button for sharing note
+    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+                                                                                 target:self
+                                                                                 action:@selector(displayShareController:)];
+    self.navigationItem.rightBarButtonItem = shareButton;
 }
 
 
@@ -130,6 +136,27 @@
 }
 
 
+- (NSArray *) arrayOfNoteItems{
+    
+    NSMutableArray *items = [NSMutableArray array];
+    
+    if (self.model.name) {
+        [items addObject:self.model.name];
+    }
+    
+    if (self.model.text) {
+        [items addObject:self.model.text];
+    }
+    
+    if (self.model.photo.image) {
+        [items addObject:self.model.photo.image];
+    }
+    
+    return items;
+}
+
+
+
 #pragma mark - Actions
 
 // Present PhotoVC
@@ -142,6 +169,16 @@
                                     initWithModel:self.model.photo];
     
     [self.navigationController pushViewController:photoVC animated:YES];
+}
+
+
+// Displays a UIActivityViewController
+-(void) displayShareController:(id) sender{
+    
+    UIActivityViewController *aVC = [[UIActivityViewController alloc] initWithActivityItems:[self arrayOfNoteItems]
+                                                                      applicationActivities:nil];
+    
+    [self presentViewController:aVC animated:YES completion:nil];
 }
 
 
