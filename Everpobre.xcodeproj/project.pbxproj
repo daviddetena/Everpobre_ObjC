@@ -38,8 +38,6 @@
 		59B964711CC841CA00F4F700 /* Notebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B9646B1CC841CA00F4F700 /* Notebook.m */; };
 		59BF64ED1CE0F5A2000F977F /* NoteCollectionCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59BF64EC1CE0F5A2000F977F /* NoteCollectionCellView.xib */; };
 		59BF64F01CE0F74F000F977F /* NoteCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BF64EF1CE0F74F000F977F /* NoteCellView.m */; };
-		59F23B431CE5C94100201206 /* NoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F23B411CE5C94100201206 /* NoteViewController.m */; };
-		59F23B441CE5C94100201206 /* NoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F23B421CE5C94100201206 /* NoteViewController.xib */; };
 		59F23B461CE5D45E00201206 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59F23B451CE5D45E00201206 /* MapKit.framework */; };
 		59F33A221CCAB1F000CAAA81 /* NotebookCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F33A211CCAB1EF00CAAA81 /* NotebookCellView.xib */; };
 		59F33A251CCAB3F000CAAA81 /* NotebookCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F33A241CCAB3F000CAAA81 /* NotebookCellView.m */; };
@@ -101,9 +99,6 @@
 		59BF64EC1CE0F5A2000F977F /* NoteCollectionCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteCollectionCellView.xib; sourceTree = "<group>"; };
 		59BF64EE1CE0F74F000F977F /* NoteCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteCellView.h; sourceTree = "<group>"; };
 		59BF64EF1CE0F74F000F977F /* NoteCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteCellView.m; sourceTree = "<group>"; };
-		59F23B401CE5C94100201206 /* NoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteViewController.h; sourceTree = "<group>"; };
-		59F23B411CE5C94100201206 /* NoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteViewController.m; sourceTree = "<group>"; };
-		59F23B421CE5C94100201206 /* NoteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteViewController.xib; sourceTree = "<group>"; };
 		59F23B451CE5D45E00201206 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		59F23B4A1CE5DC3200201206 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		59F33A211CCAB1EF00CAAA81 /* NotebookCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotebookCellView.xib; sourceTree = "<group>"; };
@@ -208,9 +203,6 @@
 				59AFE47D1CCA1A4F001E7782 /* NotebooksViewController.m */,
 				592F8F6C1CE1C0CB00FD788C /* NotesViewController.h */,
 				592F8F6D1CE1C0CB00FD788C /* NotesViewController.m */,
-				59F23B401CE5C94100201206 /* NoteViewController.h */,
-				59F23B411CE5C94100201206 /* NoteViewController.m */,
-				59F23B421CE5C94100201206 /* NoteViewController.xib */,
 				5901FD251CEB98E9000D345B /* NoteTableViewController.h */,
 				5901FD261CEB98E9000D345B /* NoteTableViewController.m */,
 				5901FD271CEB98E9000D345B /* NoteTableViewController.xib */,
@@ -355,7 +347,6 @@
 				59838BE31CE1CD6B00A67E5A /* noImage.png in Resources */,
 				5924566F1CC76C4C00C5450B /* Assets.xcassets in Resources */,
 				595842ED1CEDDBFD00B10DB3 /* location@2x.png in Resources */,
-				59F23B441CE5C94100201206 /* NoteViewController.xib in Resources */,
 				592456721CC76C4C00C5450B /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -375,7 +366,6 @@
 				59B964701CC841CA00F4F700 /* Note.m in Sources */,
 				5924567C1CC77B4E00C5450B /* AGTCoreDataStack.m in Sources */,
 				5924566D1CC76C4C00C5450B /* AppDelegate.m in Sources */,
-				59F23B431CE5C94100201206 /* NoteViewController.m in Sources */,
 				5988C2251CEC5BB100B47E2D /* PhotoViewController.m in Sources */,
 				5958D0871CEDCB3E002688FE /* _Location.m in Sources */,
 				5958D08D1CEDCFAD002688FE /* Location.m in Sources */,
@@ -445,7 +435,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -483,7 +473,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -496,6 +486,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Everpobre/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.daviddetena.Everpobre;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -508,6 +499,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Everpobre/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.daviddetena.Everpobre;
 				PRODUCT_NAME = "$(TARGET_NAME)";

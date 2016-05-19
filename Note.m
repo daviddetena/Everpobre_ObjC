@@ -63,7 +63,8 @@
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
         [self.locationManager startUpdatingLocation];
         
-        // Get only recent location. Wait for 5 seconds...
+        // Not interested in new data after a long time, so we stop the
+        // LocationManager after 5 seconds...
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self zapLocationManager];
         });
