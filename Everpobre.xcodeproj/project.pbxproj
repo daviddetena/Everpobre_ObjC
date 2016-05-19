@@ -17,6 +17,8 @@
 		5924567F1CC77F0C00C5450B /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5924567D1CC77F0C00C5450B /* Model.xcdatamodeld */; };
 		592F8F6B1CE1C05600FD788C /* AGTCoreDataCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 592F8F6A1CE1C05600FD788C /* AGTCoreDataCollectionViewController.m */; };
 		592F8F6E1CE1C0CB00FD788C /* NotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 592F8F6D1CE1C0CB00FD788C /* NotesViewController.m */; };
+		5958D0871CEDCB3E002688FE /* _Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 5958D0861CEDCB3E002688FE /* _Location.m */; };
+		5958D08D1CEDCFAD002688FE /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 5958D08C1CEDCFAD002688FE /* Location.m */; };
 		59838BE31CE1CD6B00A67E5A /* noImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 59838BE21CE1CD6B00A67E5A /* noImage.png */; };
 		5988C2251CEC5BB100B47E2D /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5988C2231CEC5BB100B47E2D /* PhotoViewController.m */; };
 		5988C2261CEC5BB100B47E2D /* PhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5988C2241CEC5BB100B47E2D /* PhotoViewController.xib */; };
@@ -58,6 +60,11 @@
 		592F8F6A1CE1C05600FD788C /* AGTCoreDataCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGTCoreDataCollectionViewController.m; sourceTree = "<group>"; };
 		592F8F6C1CE1C0CB00FD788C /* NotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesViewController.h; sourceTree = "<group>"; };
 		592F8F6D1CE1C0CB00FD788C /* NotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesViewController.m; sourceTree = "<group>"; };
+		5958D0841CEDCA79002688FE /* Model2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model2.xcdatamodel; sourceTree = "<group>"; };
+		5958D0851CEDCB3E002688FE /* _Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Location.h; sourceTree = "<group>"; };
+		5958D0861CEDCB3E002688FE /* _Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Location.m; sourceTree = "<group>"; };
+		5958D08B1CEDCFAD002688FE /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		5958D08C1CEDCFAD002688FE /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		59838BE21CE1CD6B00A67E5A /* noImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noImage.png; sourceTree = "<group>"; };
 		5988C2221CEC5BB100B47E2D /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
 		5988C2231CEC5BB100B47E2D /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
@@ -158,6 +165,8 @@
 				59B964721CC8428600F4F700 /* Machine */,
 				59B964661CC841CA00F4F700 /* NamedEntity.h */,
 				59B964671CC841CA00F4F700 /* NamedEntity.m */,
+				5958D08B1CEDCFAD002688FE /* Location.h */,
+				5958D08C1CEDCFAD002688FE /* Location.m */,
 				59B964681CC841CA00F4F700 /* Note.h */,
 				59B964691CC841CA00F4F700 /* Note.m */,
 				599230331CC93DD000568E9F /* Photo.h */,
@@ -215,6 +224,8 @@
 		59B964721CC8428600F4F700 /* Machine */ = {
 			isa = PBXGroup;
 			children = (
+				5958D0851CEDCB3E002688FE /* _Location.h */,
+				5958D0861CEDCB3E002688FE /* _Location.m */,
 				599230301CC93DC400568E9F /* _Photo.h */,
 				599230311CC93DC400568E9F /* _Photo.m */,
 				59B964601CC841CA00F4F700 /* _NamedEntity.h */,
@@ -354,6 +365,8 @@
 				5924566D1CC76C4C00C5450B /* AppDelegate.m in Sources */,
 				59F23B431CE5C94100201206 /* NoteViewController.m in Sources */,
 				5988C2251CEC5BB100B47E2D /* PhotoViewController.m in Sources */,
+				5958D0871CEDCB3E002688FE /* _Location.m in Sources */,
+				5958D08D1CEDCFAD002688FE /* Location.m in Sources */,
 				59AFE4821CCA4198001E7782 /* UIViewController+Navigation.m in Sources */,
 				59B9646F1CC841CA00F4F700 /* NamedEntity.m in Sources */,
 				59AFE47E1CCA1A4F001E7782 /* NotebooksViewController.m in Sources */,
@@ -516,9 +529,10 @@
 		5924567D1CC77F0C00C5450B /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				5958D0841CEDCA79002688FE /* Model2.xcdatamodel */,
 				5924567E1CC77F0C00C5450B /* Model.xcdatamodel */,
 			);
-			currentVersion = 5924567E1CC77F0C00C5450B /* Model.xcdatamodel */;
+			currentVersion = 5958D0841CEDCA79002688FE /* Model2.xcdatamodel */;
 			name = Model.xcdatamodeld;
 			path = ../Model.xcdatamodeld;
 			sourceTree = "<group>";

@@ -34,6 +34,8 @@
 
 @dynamic text;
 
+@dynamic location;
+
 @dynamic notebook;
 
 @dynamic photo;
@@ -47,6 +49,9 @@
 @end
 
 @implementation NoteRelationships 
++ (NSString *)location {
+	return @"location";
+}
 + (NSString *)notebook {
 	return @"notebook";
 }

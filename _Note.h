@@ -13,6 +13,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class Location;
 @class Notebook;
 @class Photo;
 
@@ -27,6 +28,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong, nullable) NSString* text;
 
+@property (nonatomic, strong, nullable) Location *location;
+
 @property (nonatomic, strong) Notebook *notebook;
 
 @property (nonatomic, strong, nullable) Photo *photo;
@@ -37,6 +40,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSString*)primitiveText;
 - (void)setPrimitiveText:(NSString*)value;
+
+- (Location*)primitiveLocation;
+- (void)setPrimitiveLocation:(Location*)value;
 
 - (Notebook*)primitiveNotebook;
 - (void)setPrimitiveNotebook:(Notebook*)value;
@@ -51,6 +57,7 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface NoteRelationships: NSObject
++ (NSString *)location;
 + (NSString *)notebook;
 + (NSString *)photo;
 @end
