@@ -45,6 +45,33 @@
 }
 
 
+#pragma mark - Instance init
+
+// Method that all the NSManagedObject execute once in their lifecycle. Use this method to assign a location, if possible, to the note
+-(void) awakeFromInsert{
+    [super awakeFromInsert];
+    
+    // Check if permission to location is allowed
+    CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
+    
+    // Only if user permission allowed and location services enabled we can use location
+    if (((status == kCLAuthorizationStatusAuthorizedAlways) || (status == kCLAuthorizationStatusAuthorizedWhenInUse) || (status == kCLAuthorizationStatusNotDetermined)) && [CLLocationManager locationServicesEnabled]) {
+        
+        // Create LocationManager and set delegate
+        self.locationManager = [[CLLocationManager alloc]init];
+        self.locationManager.delegate = self;
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        [self.locationManager startUpdatingLocation];
+        
+        // Get only recent location. Wait for 5 seconds...
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self zapLocationManager];
+        });
+    }
+}
+
+
+
 #pragma mark - Utils
 // Make the LocationManager stop updating
 -(void) zapLocationManager{
