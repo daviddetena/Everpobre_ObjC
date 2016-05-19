@@ -1,6 +1,7 @@
 #import "Note.h"
 #import "Notebook.h"
 #import "Location.h"
+#import "Settings.h"
 @import CoreLocation;
 
 @interface Note ()<CLLocationManagerDelegate>
@@ -55,12 +56,20 @@
     CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
     
     // Only if user permission allowed and location services enabled we can use location
-    if (((status == kCLAuthorizationStatusAuthorizedAlways) || (status == kCLAuthorizationStatusAuthorizedWhenInUse) || (status == kCLAuthorizationStatusNotDetermined)) && [CLLocationManager locationServicesEnabled]) {
+    if (((status == kCLAuthorizationStatusAuthorizedWhenInUse) || (status == kCLAuthorizationStatusNotDetermined)) && [CLLocationManager locationServicesEnabled]) {
         
         // Create LocationManager and set delegate
         self.locationManager = [[CLLocationManager alloc]init];
         self.locationManager.delegate = self;
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        
+        // Check for iOS 8. Without this guard the code will crash with "unknown selector" on iOS 7
+        if (IS_OS_8_OR_LATER) {
+            if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+                [self.locationManager requestWhenInUseAuthorization];
+            }
+        }        
+        
         [self.locationManager startUpdatingLocation];
         
         // Not interested in new data after a long time, so we stop the
