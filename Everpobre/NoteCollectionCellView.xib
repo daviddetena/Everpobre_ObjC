@@ -3,44 +3,87 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="h5g-ya-HRR" customClass="NoteCellView">
-            <rect key="frame" x="0.0" y="0.0" width="140" height="150"/>
+            <rect key="frame" x="0.0" y="0.0" width="140" height="155"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="140" height="150"/>
+                <rect key="frame" x="0.0" y="0.0" width="140" height="155"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="noImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="wIC-i4-Cav">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="noImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="wIC-i4-Cav">
                         <rect key="frame" x="0.0" y="0.0" width="140" height="90"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P8p-An-fvS">
-                        <rect key="frame" x="5" y="94" width="130" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P8p-An-fvS">
+                        <rect key="frame" x="8" y="95" width="100" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="7S9-hO-307"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="HelveticaNeue-BoldItalic" family="Helvetica Neue" pointSize="14"/>
                         <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="7S9-hO-307"/>
+                            </mask>
+                        </variation>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M0y-Kl-XtI">
-                        <rect key="frame" x="5" y="121" width="130" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M0y-Kl-XtI">
+                        <rect key="frame" x="5" y="131" width="130" height="16"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="location.png" translatesAutoresizingMaskIntoConstraints="NO" id="ehL-rL-CMU">
+                        <rect key="frame" x="115" y="93" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="3JK-jy-Qkh"/>
+                            <constraint firstAttribute="height" constant="25" id="KpT-3D-Ien"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="25" id="Px5-xq-qOh"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="wIC-i4-Cav" firstAttribute="leading" secondItem="h5g-ya-HRR" secondAttribute="leading" id="2P7-yd-lWC"/>
+                <constraint firstAttribute="trailing" secondItem="ehL-rL-CMU" secondAttribute="trailing" constant="5" id="59p-s7-DJt"/>
+                <constraint firstItem="ehL-rL-CMU" firstAttribute="trailing" secondItem="h5g-ya-HRR" secondAttribute="trailingMargin" id="9tw-MU-EjU"/>
+                <constraint firstItem="P8p-An-fvS" firstAttribute="leading" secondItem="M0y-Kl-XtI" secondAttribute="leading" constant="3" id="BPr-Eq-dKI"/>
+                <constraint firstItem="ehL-rL-CMU" firstAttribute="leading" secondItem="P8p-An-fvS" secondAttribute="trailing" constant="-3" id="Bbr-zr-XDq"/>
+                <constraint firstItem="P8p-An-fvS" firstAttribute="top" secondItem="wIC-i4-Cav" secondAttribute="bottom" constant="5" id="K7i-He-rXY"/>
+                <constraint firstAttribute="bottom" secondItem="ehL-rL-CMU" secondAttribute="bottom" constant="33" id="Pzx-kQ-Kj3"/>
+                <constraint firstItem="wIC-i4-Cav" firstAttribute="top" secondItem="h5g-ya-HRR" secondAttribute="top" id="T3h-tg-77A"/>
+                <constraint firstItem="wIC-i4-Cav" firstAttribute="centerX" secondItem="M0y-Kl-XtI" secondAttribute="centerX" id="YPo-3w-Esp"/>
+                <constraint firstAttribute="trailing" secondItem="wIC-i4-Cav" secondAttribute="trailing" id="ZVG-af-Ugd"/>
+                <constraint firstItem="ehL-rL-CMU" firstAttribute="leading" secondItem="P8p-An-fvS" secondAttribute="trailing" constant="7" id="aEN-hJ-pTU"/>
+                <constraint firstItem="ehL-rL-CMU" firstAttribute="top" secondItem="wIC-i4-Cav" secondAttribute="bottom" constant="3" id="pFZ-As-jFP"/>
+                <constraint firstItem="M0y-Kl-XtI" firstAttribute="top" secondItem="P8p-An-fvS" secondAttribute="bottom" constant="15" id="tmQ-mf-8I1"/>
+                <constraint firstItem="P8p-An-fvS" firstAttribute="leading" secondItem="h5g-ya-HRR" secondAttribute="leading" constant="8" id="ud8-rf-FBm"/>
+                <constraint firstItem="ehL-rL-CMU" firstAttribute="centerY" secondItem="P8p-An-fvS" secondAttribute="centerY" id="x5c-fu-bhU"/>
+            </constraints>
+            <size key="customSize" width="140" height="155"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="9tw-MU-EjU"/>
+                    <exclude reference="Bbr-zr-XDq"/>
+                </mask>
+            </variation>
             <connections>
+                <outlet property="locationView" destination="ehL-rL-CMU" id="8cH-UP-9oB"/>
                 <outlet property="modificationDateLabel" destination="P8p-An-fvS" id="JcW-8K-3F6"/>
                 <outlet property="photoView" destination="wIC-i4-Cav" id="5nb-ez-1d8"/>
                 <outlet property="titleLabel" destination="M0y-Kl-XtI" id="KG9-CT-uhn"/>
             </connections>
-            <point key="canvasLocation" x="237" y="206"/>
+            <point key="canvasLocation" x="237" y="208.5"/>
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="location.png" width="25" height="25"/>
         <image name="noImage.png" width="285" height="174"/>
     </resources>
 </document>

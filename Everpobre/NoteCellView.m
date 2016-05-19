@@ -18,7 +18,7 @@
 
 #pragma mark - Class methods
 +(NSArray *) keys{
-    return @[@"title", @"modificationDate", @"photo.image"];
+    return @[@"title", @"modificationDate", @"photo.image", @"location", @"location.latitude", @"location.longitude", @"location.address"];
 }
 
 
@@ -66,6 +66,14 @@
         img = self.note.photo.image;
     }
     self.photoView.image = img;
+    
+    // Add location image if exists
+    if (self.note.hasLocation) {
+        self.locationView.image = [UIImage imageNamed:@"location.png"];
+    }
+    else{
+        self.locationView.image = nil;
+    }
 }
 
 
