@@ -11,6 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class MapSnapshot;
 @class Note;
 
 @interface LocationID : NSManagedObjectID {}
@@ -35,6 +36,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (atomic) double longitudeValue;
 - (double)longitudeValue;
 - (void)setLongitudeValue:(double)value_;
+
+@property (nonatomic, strong, nullable) MapSnapshot *mapSnapshot;
 
 @property (nonatomic, strong) NSSet<Note*> *notes;
 - (NSMutableSet<Note*>*)notesSet;
@@ -66,18 +69,22 @@ NS_ASSUME_NONNULL_BEGIN
 - (double)primitiveLongitudeValue;
 - (void)setPrimitiveLongitudeValue:(double)value_;
 
+- (MapSnapshot*)primitiveMapSnapshot;
+- (void)setPrimitiveMapSnapshot:(MapSnapshot*)value;
+
 - (NSMutableSet<Note*>*)primitiveNotes;
 - (void)setPrimitiveNotes:(NSMutableSet<Note*>*)value;
 
 @end
 
-@interface LocationAttributes: NSObject
+@interface LocationAttributes: NSObject 
 + (NSString *)address;
 + (NSString *)latitude;
 + (NSString *)longitude;
 @end
 
 @interface LocationRelationships: NSObject
++ (NSString *)mapSnapshot;
 + (NSString *)notes;
 @end
 

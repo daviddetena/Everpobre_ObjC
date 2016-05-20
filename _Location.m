@@ -1,12 +1,12 @@
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
-// Make changes to DTCLocation.m instead.
+// Make changes to Location.m instead.
 
-#import "_DTCLocation.h"
+#import "_Location.h"
 
-@implementation DTCLocationID
+@implementation LocationID
 @end
 
-@implementation _DTCLocation
+@implementation _Location
 
 + (instancetype)insertInManagedObjectContext:(NSManagedObjectContext *)moc_ {
 	NSParameterAssert(moc_);
@@ -22,8 +22,8 @@
 	return [NSEntityDescription entityForName:@"Location" inManagedObjectContext:moc_];
 }
 
-- (DTCLocationID*)objectID {
-	return (DTCLocationID*)[super objectID];
+- (LocationID*)objectID {
+	return (LocationID*)[super objectID];
 }
 
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
@@ -85,6 +85,8 @@
 	[self setPrimitiveLongitude:@(value_)];
 }
 
+@dynamic mapSnapshot;
+
 @dynamic notes;
 
 - (NSMutableSet<Note*>*)notesSet {
@@ -98,7 +100,7 @@
 
 @end
 
-@implementation DTCLocationAttributes 
+@implementation LocationAttributes 
 + (NSString *)address {
 	return @"address";
 }
@@ -110,7 +112,10 @@
 }
 @end
 
-@implementation DTCLocationRelationships 
+@implementation LocationRelationships 
++ (NSString *)mapSnapshot {
+	return @"mapSnapshot";
+}
 + (NSString *)notes {
 	return @"notes";
 }
