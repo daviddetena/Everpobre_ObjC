@@ -8,6 +8,7 @@
 
 #import "PhotoViewController.h"
 #import "Photo.h"
+#import "UIImage+Resize.h"
 @import CoreImage;
 
 @interface PhotoViewController ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
@@ -247,127 +248,46 @@
     return nil;
 }
 
-- (UIImage *) scaleAndRotateImage: (UIImage *)image{
-    
-    // Max resolution = device screen size * device screen scale
-    CGSize iOSDeviceScreenSize = [[UIScreen mainScreen] bounds].size;
-    CGFloat scale = [[UIScreen mainScreen] scale];
-    int kMaxResolution = iOSDeviceScreenSize.width * (int)scale;
-
-    
-    CGImageRef imgRef = image.CGImage;
-    
-    CGFloat width = CGImageGetWidth(imgRef);
-    CGFloat height = CGImageGetHeight(imgRef);
-    
-    CGAffineTransform transform = CGAffineTransformIdentity;
-    CGRect bounds = CGRectMake(0, 0, width, height);
-    if (width > kMaxResolution || height > kMaxResolution) {
-        CGFloat ratio = width/height;
-        if (ratio > 1) {
-            bounds.size.width = kMaxResolution;
-            bounds.size.height = bounds.size.width / ratio;
-        }
-        else {
-            bounds.size.height = kMaxResolution;
-            bounds.size.width = bounds.size.height * ratio;
-        }
-    }
-    
-    CGFloat scaleRatio = bounds.size.width / width;
-    CGSize imageSize = CGSizeMake(CGImageGetWidth(imgRef),      CGImageGetHeight(imgRef));
-    CGFloat boundHeight;
-    UIImageOrientation orient = image.imageOrientation;
-    switch(orient)
-    {
-        case UIImageOrientationUp: //EXIF = 1
-            transform = CGAffineTransformIdentity;
-            break;
-            
-        case UIImageOrientationUpMirrored: //EXIF = 2
-            transform = CGAffineTransformMakeTranslation(imageSize.width, 0.0);
-            transform = CGAffineTransformScale(transform, -1.0, 1.0);
-            break;
-            
-        case UIImageOrientationDown: //EXIF = 3
-            transform = CGAffineTransformMakeTranslation(imageSize.width, imageSize.height);
-            transform = CGAffineTransformRotate(transform, M_PI);
-            break;
-            
-        case UIImageOrientationDownMirrored: //EXIF = 4
-            transform = CGAffineTransformMakeTranslation(0.0, imageSize.height);
-            transform = CGAffineTransformScale(transform, 1.0, -1.0);
-            break;
-            
-        case UIImageOrientationLeftMirrored: //EXIF = 5
-            boundHeight = bounds.size.height;
-            bounds.size.height = bounds.size.width;
-            bounds.size.width = boundHeight;
-            transform = CGAffineTransformMakeTranslation(imageSize.height, imageSize.width);
-            transform = CGAffineTransformScale(transform, -1.0, 1.0);
-            transform = CGAffineTransformRotate(transform, 3.0 * M_PI / 2.0);
-            break;
-            
-        case UIImageOrientationLeft: //EXIF = 6
-            boundHeight = bounds.size.height;
-            bounds.size.height = bounds.size.width;
-            bounds.size.width = boundHeight;
-            transform = CGAffineTransformMakeTranslation(0.0, imageSize.width);
-            transform = CGAffineTransformRotate(transform, 3.0 * M_PI / 2.0);
-            break;
-            
-        case UIImageOrientationRightMirrored: //EXIF = 7
-            boundHeight = bounds.size.height;
-            bounds.size.height = bounds.size.width;
-            bounds.size.width = boundHeight;
-            transform = CGAffineTransformMakeScale(-1.0, 1.0);
-            transform = CGAffineTransformRotate(transform, M_PI / 2.0);
-            break;
-            
-        case UIImageOrientationRight: //EXIF = 8
-            boundHeight = bounds.size.height;
-            bounds.size.height = bounds.size.width;
-            bounds.size.width = boundHeight;
-            transform = CGAffineTransformMakeTranslation(imageSize.height, 0.0);
-            transform = CGAffineTransformRotate(transform, M_PI / 2.0);
-            break;
-            
-        default:
-            [NSException raise:NSInternalInconsistencyException format:@"Invalid image orientation"];
-    }
-    
-    UIGraphicsBeginImageContext(bounds.size);
-    
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    
-    if (orient == UIImageOrientationRight || orient == UIImageOrientationLeft)
-    {
-        CGContextScaleCTM(context, -scaleRatio, scaleRatio);
-        CGContextTranslateCTM(context, -height, 0);
-    }
-    else {
-        CGContextScaleCTM(context, scaleRatio, -scaleRatio);
-        CGContextTranslateCTM(context, 0, -height);
-    }
-    
-    CGContextConcatCTM(context, transform);
-    
-    CGContextDrawImage(UIGraphicsGetCurrentContext(), CGRectMake(0, 0, width, height), imgRef);
-    UIImage *imageCopy = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return imageCopy;
-}
-
 
 #pragma mark - UIImagePickerControllerDelegate
 
 -(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
     
-    UIImage *img = [info objectForKey:UIImagePickerControllerOriginalImage];
+    // The image taken will be resized and rotated (if needed) in the background
+    __block UIImage *img = [info objectForKey:UIImagePickerControllerOriginalImage];
     
-    // Update model so the photoView is updated in viewWillDisappear
-    self.model.image = [self scaleAndRotateImage:img];
+    // Take screen dimensions
+    CGRect screenBounds = [[UIScreen mainScreen] bounds];
+    CGFloat screenScale = [[UIScreen mainScreen] scale];
+    CGSize screenSize = CGSizeMake(screenBounds.size.width * screenScale, screenBounds.size.height * screenScale);
+    
+    
+    // Show alert with an UIActivityView animating while processing in the background
+    UIActivityIndicatorView *activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    activityView.hidesWhenStopped = YES;
+    activityView.frame = CGRectMake(screenBounds.size.width/2, screenBounds.size.height/2, 50, 50);
+    [self.view addSubview:activityView];
+    [activityView startAnimating];
+    //UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil
+                                                                   //message:@"Loading..."
+                                                            //preferredStyle:UIAlertControllerStyleAlert];
+    //[alert.view addSubview:activityView];
+    //[self presentViewController:alert animated:YES completion:nil];
+    
+    
+    // Rotate (if needed) and reduce size of image taken, in the background (cause it has high memory consuptiom)
+    // Thank to Trevor Harmon's Categories
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        img = [img resizedImage:screenSize interpolationQuality:kCGInterpolationMedium];
+        
+        // Refresh UI in main queue, and model (so the photoView is updated in viewWillDisappear)
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [activityView stopAnimating];
+            self.photoView.image = img;
+            self.model.image = img;
+        });
+    });
     
     // Dismiss picker
     [self dismissViewControllerAnimated:YES completion:^{

@@ -84,10 +84,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="462" height="199"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BNr-Mf-uD6">
+                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BNr-Mf-uD6">
                         <rect key="frame" x="0.0" y="0.0" width="231" height="199"/>
                     </imageView>
-                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YR2-kM-thx">
+                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YR2-kM-thx">
                         <rect key="frame" x="231" y="0.0" width="231" height="199"/>
                     </imageView>
                 </subviews>

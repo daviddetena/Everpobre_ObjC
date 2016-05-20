@@ -24,6 +24,9 @@
 		594D4BEF1CEF34570022F1CE /* noSnapshot.png in Resources */ = {isa = PBXBuildFile; fileRef = 594D4BEE1CEF34570022F1CE /* noSnapshot.png */; };
 		594D4BF31CEF47CF0022F1CE /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 594D4BF11CEF47CF0022F1CE /* LocationViewController.m */; };
 		594D4BF41CEF47CF0022F1CE /* LocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 594D4BF21CEF47CF0022F1CE /* LocationViewController.xib */; };
+		594D4BF91CEF77250022F1CE /* UIImage+Alpha.m in Sources */ = {isa = PBXBuildFile; fileRef = 594D4BF61CEF77250022F1CE /* UIImage+Alpha.m */; };
+		594D4BFA1CEF77250022F1CE /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 594D4BF81CEF77250022F1CE /* UIImage+Resize.m */; };
+		594D4BFD1CEF77C20022F1CE /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = 594D4BFC1CEF77C20022F1CE /* UIImage+RoundedCorner.m */; };
 		595842EC1CEDDBFD00B10DB3 /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = 595842E91CEDDBFD00B10DB3 /* location.png */; };
 		595842ED1CEDDBFD00B10DB3 /* location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 595842EA1CEDDBFD00B10DB3 /* location@2x.png */; };
 		595842EE1CEDDBFD00B10DB3 /* location@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 595842EB1CEDDBFD00B10DB3 /* location@3x.png */; };
@@ -79,6 +82,12 @@
 		594D4BF01CEF47CF0022F1CE /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
 		594D4BF11CEF47CF0022F1CE /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
 		594D4BF21CEF47CF0022F1CE /* LocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationViewController.xib; sourceTree = "<group>"; };
+		594D4BF51CEF77250022F1CE /* UIImage+Alpha.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Alpha.h"; sourceTree = "<group>"; };
+		594D4BF61CEF77250022F1CE /* UIImage+Alpha.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Alpha.m"; sourceTree = "<group>"; };
+		594D4BF71CEF77250022F1CE /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
+		594D4BF81CEF77250022F1CE /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
+		594D4BFB1CEF77C20022F1CE /* UIImage+RoundedCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RoundedCorner.h"; sourceTree = "<group>"; };
+		594D4BFC1CEF77C20022F1CE /* UIImage+RoundedCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RoundedCorner.m"; sourceTree = "<group>"; };
 		595842E91CEDDBFD00B10DB3 /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location.png; sourceTree = "<group>"; };
 		595842EA1CEDDBFD00B10DB3 /* location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location@2x.png"; sourceTree = "<group>"; };
 		595842EB1CEDDBFD00B10DB3 /* location@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location@3x.png"; sourceTree = "<group>"; };
@@ -236,6 +245,12 @@
 		59AFE47F1CCA4062001E7782 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				594D4BFB1CEF77C20022F1CE /* UIImage+RoundedCorner.h */,
+				594D4BFC1CEF77C20022F1CE /* UIImage+RoundedCorner.m */,
+				594D4BF51CEF77250022F1CE /* UIImage+Alpha.h */,
+				594D4BF61CEF77250022F1CE /* UIImage+Alpha.m */,
+				594D4BF71CEF77250022F1CE /* UIImage+Resize.h */,
+				594D4BF81CEF77250022F1CE /* UIImage+Resize.m */,
 				59AFE4801CCA4198001E7782 /* UIViewController+Navigation.h */,
 				59AFE4811CCA4198001E7782 /* UIViewController+Navigation.m */,
 			);
@@ -384,6 +399,7 @@
 			files = (
 				599230351CC93DD000568E9F /* Photo.m in Sources */,
 				59BF64F01CE0F74F000F977F /* NoteCellView.m in Sources */,
+				594D4BF91CEF77250022F1CE /* UIImage+Alpha.m in Sources */,
 				592F8F6B1CE1C05600FD788C /* AGTCoreDataCollectionViewController.m in Sources */,
 				599230321CC93DC400568E9F /* _Photo.m in Sources */,
 				594D4BEB1CEF2B560022F1CE /* _MapSnapshot.m in Sources */,
@@ -394,6 +410,7 @@
 				5924567C1CC77B4E00C5450B /* AGTCoreDataStack.m in Sources */,
 				5924566D1CC76C4C00C5450B /* AppDelegate.m in Sources */,
 				5988C2251CEC5BB100B47E2D /* PhotoViewController.m in Sources */,
+				594D4BFA1CEF77250022F1CE /* UIImage+Resize.m in Sources */,
 				59AFE4821CCA4198001E7782 /* UIViewController+Navigation.m in Sources */,
 				59B9646F1CC841CA00F4F700 /* NamedEntity.m in Sources */,
 				59AFE47E1CCA1A4F001E7782 /* NotebooksViewController.m in Sources */,
@@ -405,6 +422,7 @@
 				592F8F6E1CE1C0CB00FD788C /* NotesViewController.m in Sources */,
 				59B9646C1CC841CA00F4F700 /* _NamedEntity.m in Sources */,
 				59B9646E1CC841CA00F4F700 /* _Notebook.m in Sources */,
+				594D4BFD1CEF77C20022F1CE /* UIImage+RoundedCorner.m in Sources */,
 				5924567F1CC77F0C00C5450B /* Model.xcdatamodeld in Sources */,
 				594D4BEC1CEF2B560022F1CE /* Location.m in Sources */,
 				5901FD281CEB98E9000D345B /* NoteTableViewController.m in Sources */,
