@@ -8,9 +8,12 @@
 
 #import "NoteTableViewController.h"
 #import "PhotoViewController.h"
+#import "LocationViewController.h"
 #import "Note.h"
 #import "Notebook.h"
 #import "Photo.h"
+#import "Location.h"
+#import "MapSnapshot.h"
 #import <MapKit/MapKit.h>
 
 @interface NoteTableViewController ()
@@ -31,7 +34,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *modificationDateLabel;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (weak, nonatomic) IBOutlet UIImageView *photoView;
-@property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (weak, nonatomic) IBOutlet UIImageView *mapSnapshotView;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 
 
@@ -52,7 +55,9 @@
 
 // Create new empty notebook and then call the designated initializer
 -(id) initForNewNoteInNotebook:(Notebook *) notebook{
-    Note *newNote = [Note noteWithName:@"New note" notebook:notebook context:notebook.managedObjectContext];
+    Note *newNote = [Note noteWithName:@"New note"
+                              notebook:notebook
+                               context:notebook.managedObjectContext];
     _isNew = YES;
     return [self initWithModel:newNote];
 }
@@ -63,44 +68,18 @@
 -(void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    // Sync changes from model to view
-    NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
-    fmt.dateStyle = NSDateFormatterLongStyle;
+    // Setup navigation bar buttons
+    [self setupNavigationButtons];
+    // Setup UI elements
+    [self setupUIText];
+    [self setupUIPhoto];
+    [self setupMapSnapshot];
     
-    self.modificationDateLabel.text = [fmt stringFromDate:self.model.modificationDate];
-    self.nameTextField.text = self.model.name;
-    self.textView.text = self.model.text;
+    // Observe mapsnapshot, in case it changes in the background it may appear after, so its image will be refreshed
+    [self startObservingSnapshot];
     
-    UIImage *img = self.model.photo.image;
-    if (img == nil) {
-        img = [UIImage imageNamed:@"noImage.png"];
-    }
-    self.photoView.image = img;
-    [self setupInputAccessoryView];
-    
-    // If this is a new note we need an edition mode to cancel (delete) the current note and pops the VC
-    if (self.isNew) {
-        UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
-                                                                                   target:self
-                                                                                   action:@selector(cancelNote:)];
-        self.navigationItem.rightBarButtonItem = cancelBtn;
-    }
-    
-    
-    // Set delegates
-    self.nameTextField.delegate = self;
-    
-    // Add gesture recognizer for displaying PhotoVC when tapping the image
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                          action:@selector(displayDetailPhoto:)];
-    
-    [self.photoView addGestureRecognizer:tap];
-    
-    // Add button for sharing note
-    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
-                                                                                 target:self
-                                                                                 action:@selector(displayShareController:)];
-    self.navigationItem.rightBarButtonItem = shareButton;
+    // Custom toolbar for keyboard input
+    [self setupToolBarForKeyboard];
 }
 
 
@@ -116,28 +95,107 @@
         self.model.name = self.nameTextField.text;
         self.model.text = self.textView.text;
         self.model.photo.image = self.photoView.image;
+        
+        // Enhancement: in case the location could be modified, here we should sync changes
     }
     
-    //[self stopObservingKeyboard];
+    [self stopObservingSnapshot];
 }
 
 
 #pragma mark - Utils
+
+-(BOOL) noteHasLocation{
+    return (self.model.location.mapSnapshot.image != nil);
+}
+
+
+// Add two buttons in the navigation bar
+-(void) setupNavigationButtons{
+    // If this is a new note we need an edition mode to cancel (delete) the current note and pops the VC
+    if (self.isNew) {
+        UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                                                   target:self
+                                                                                   action:@selector(cancelNote:)];
+        self.navigationItem.rightBarButtonItem = cancelBtn;
+    }
+    
+    // Add button for sharing note
+    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+                                                                                 target:self
+                                                                                 action:@selector(displayShareController:)];
+    self.navigationItem.rightBarButtonItem = shareButton;
+}
+
+-(void) setupUIText{
+    
+    // Set content for the labels and text views
+    NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
+    fmt.dateStyle = NSDateFormatterLongStyle;
+    
+    self.modificationDateLabel.text = [fmt stringFromDate:self.model.modificationDate];
+    self.nameTextField.text = self.model.name;
+    self.textView.text = self.model.text;
+    
+    // Set textfield delegate
+    self.nameTextField.delegate = self;
+}
+
+
+
+-(void) setupUIPhoto{
+    // Image
+    UIImage *img = self.model.photo.image;
+    if (!img) {
+        img = [UIImage imageNamed:@"noImage.png"];
+    }
+    self.photoView.image = img;
+}
+
+
+// Setup Map snapshot with the location in the model
+-(void) setupMapSnapshot{
+    
+    UIImage *img = self.model.location.mapSnapshot.image;
+    self.mapSnapshotView.userInteractionEnabled = YES;
+    if (!img) {
+        img = [UIImage imageNamed:@"noSnapshot.png"];
+        self.mapSnapshotView.userInteractionEnabled = NO;
+    }
+    self.mapSnapshotView.image = img;
+}
+
+
+- (void) setupGestureRecognizers{
+    // Add gesture recognizer for displaying PhotoVC when tapping the image    
+    self.photoView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                          action:@selector(displayDetailPhoto:)];
+    
+    tap.cancelsTouchesInView = NO;
+    [self.photoView addGestureRecognizer:tap];
+    
+    self.mapSnapshotView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *secondTap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                          action:@selector(displayDetailLocation:)];
+    
+    secondTap.cancelsTouchesInView = NO;
+    [self.mapSnapshotView addGestureRecognizer:secondTap];
+}
+
+
+
 // Override this method to disable orientation changes when in login screen
 -(BOOL) shouldAutorotate{
     return NO;
 }
 
 
-- (void) cancelNote:(id) sender{
-    // Mark current note as "to be deleted" and pop VC
-    self.deleteCurrentNote = YES;
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
-
+// Helper method that composes an array with the objects we want the UIActivityVC to display when sharing the note
 - (NSArray *) arrayOfNoteItems{
     
+    // We want to share name, text and image
     NSMutableArray *items = [NSMutableArray array];
     
     if (self.model.name) {
@@ -156,6 +214,27 @@
 }
 
 
+#pragma mark - KVO
+-(void) startObservingSnapshot{
+    [self.model addObserver:self
+                 forKeyPath:@"location.mapSnapshot.snapshotData"
+                    options:NSKeyValueObservingOptionNew context:NULL];
+}
+
+-(void) stopObservingSnapshot{
+    [self.model removeObserver:self
+                    forKeyPath:@"location.mapSnapshot.snapshotData"];
+}
+
+-(void) observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary<NSString *,id> *)change
+                       context:(void *)context{
+    
+    // Refresh Map's Snapshot with changes
+    [self setupMapSnapshot];
+}
+
 
 #pragma mark - Actions
 
@@ -171,6 +250,12 @@
     [self.navigationController pushViewController:photoVC animated:YES];
 }
 
+// Present LocationVC
+- (void) displayDetailLocation:(id) sender{    
+    LocationViewController *locationVC = [[LocationViewController alloc] initWithLocation:self.model.location];
+    [self.navigationController pushViewController:locationVC animated:YES];
+}
+
 
 // Displays a UIActivityViewController
 -(void) displayShareController:(id) sender{
@@ -181,12 +266,20 @@
     [self presentViewController:aVC animated:YES completion:nil];
 }
 
+// When we press "cancel" button, set note as "to be deleted" when viewWillDisappear is called
+- (void) cancelNote:(id) sender{
+    // Mark current note as "to be deleted" and pop VC
+    self.deleteCurrentNote = YES;
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
 
 #pragma mark - Keyboard
 /*
  Sets up a toolbar to place at the top of the keyboard when its appears
  */
-- (void) setupInputAccessoryView{
+- (void) setupToolBarForKeyboard{
     
     UIToolbar *textViewBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.textView.frame.size.width, 44)];
     // Add smile, separator and done buttons
@@ -206,10 +299,14 @@
     self.textView.inputAccessoryView = textViewBar;
 }
 
-
 // Dismiss keyboard when done button pressed
 - (void) dismissKeyboard:(id) sender{
     [self.view endEditing:YES];
+}
+
+// Insert the title of the sender as text in the input view
+- (void) insertTitle:(UIBarButtonItem *) sender{
+    [self.textView insertText:[NSString stringWithFormat:@"%@ ", sender.title]];
 }
 
 
@@ -276,9 +373,11 @@
                 cell = self.nameCell;
                 break;
                 
-            // Photo & map cell
+            // Photo & map cell. Setup recognizers
             case 2:
                 cell = self.photoAndMapCell;
+                // Custom recognizers for the photoViews
+                [self setupGestureRecognizers];
                 break;
                 
             // Text cell
@@ -301,6 +400,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSLog(@"Estoy dando en la celda %d", indexPath.row);
 }
 
 

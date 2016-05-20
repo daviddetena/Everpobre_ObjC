@@ -8,13 +8,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NoteTableViewController">
             <connections>
-                <outlet property="mapView" destination="kFv-jw-bHi" id="KdD-GW-hnX"/>
+                <outlet property="mapSnapshotView" destination="YR2-kM-thx" id="KpP-wf-C5X"/>
                 <outlet property="modificationDateCell" destination="6UE-8X-1s1" id="w26-i2-brA"/>
                 <outlet property="modificationDateLabel" destination="Qku-iI-VGD" id="RQl-a1-EGc"/>
                 <outlet property="nameCell" destination="kcf-ls-vMR" id="ZIE-Oa-G21"/>
                 <outlet property="nameTextField" destination="AkT-2O-1mP" id="T6h-No-lkY"/>
                 <outlet property="photoAndMapCell" destination="Ms7-zF-9gS" id="Rhs-Hy-Oh2"/>
-                <outlet property="photoView" destination="oBF-cU-qgQ" id="cBr-7w-Rs9"/>
+                <outlet property="photoView" destination="BNr-Mf-uD6" id="lsw-sv-tOW"/>
                 <outlet property="textCell" destination="5yl-XA-YV4" id="DVB-F0-ClW"/>
                 <outlet property="textView" destination="Eck-63-LiB" id="ksi-5X-deE"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -84,25 +84,28 @@
                 <rect key="frame" x="0.0" y="0.0" width="462" height="199"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oBF-cU-qgQ">
-                        <rect key="frame" x="0.0" y="0.0" width="234" height="199"/>
+                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BNr-Mf-uD6">
+                        <rect key="frame" x="0.0" y="0.0" width="231" height="199"/>
                     </imageView>
-                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="kFv-jw-bHi">
-                        <rect key="frame" x="234" y="0.0" width="234" height="199"/>
-                    </mapView>
+                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YR2-kM-thx">
+                        <rect key="frame" x="231" y="0.0" width="231" height="199"/>
+                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="oBF-cU-qgQ" firstAttribute="bottom" secondItem="kFv-jw-bHi" secondAttribute="bottom" id="2EU-QY-mzp"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="kFv-jw-bHi" secondAttribute="trailing" constant="-14" id="3wJ-M6-b0q"/>
-                    <constraint firstItem="oBF-cU-qgQ" firstAttribute="leading" secondItem="faX-ri-sUe" secondAttribute="leading" id="Cja-e9-Xzk"/>
-                    <constraint firstItem="kFv-jw-bHi" firstAttribute="leading" secondItem="oBF-cU-qgQ" secondAttribute="trailing" id="DPd-53-Tqj"/>
-                    <constraint firstItem="oBF-cU-qgQ" firstAttribute="top" secondItem="faX-ri-sUe" secondAttribute="top" id="P9H-1K-mUl"/>
-                    <constraint firstAttribute="bottom" secondItem="oBF-cU-qgQ" secondAttribute="bottom" id="duD-gt-Jos"/>
-                    <constraint firstItem="oBF-cU-qgQ" firstAttribute="top" secondItem="kFv-jw-bHi" secondAttribute="top" id="i5W-P8-rUp"/>
-                    <constraint firstItem="oBF-cU-qgQ" firstAttribute="width" secondItem="kFv-jw-bHi" secondAttribute="width" id="ohD-um-394"/>
+                    <constraint firstItem="YR2-kM-thx" firstAttribute="leading" secondItem="BNr-Mf-uD6" secondAttribute="trailing" id="0qq-d9-A5T"/>
+                    <constraint firstItem="YR2-kM-thx" firstAttribute="top" secondItem="faX-ri-sUe" secondAttribute="topMargin" constant="-8" id="Kbd-bU-Xtd"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="YR2-kM-thx" secondAttribute="trailing" constant="-8" id="LDz-FU-Zed"/>
+                    <constraint firstItem="BNr-Mf-uD6" firstAttribute="top" secondItem="YR2-kM-thx" secondAttribute="top" id="b2b-CR-zlN"/>
+                    <constraint firstItem="BNr-Mf-uD6" firstAttribute="leading" secondItem="faX-ri-sUe" secondAttribute="leading" id="cVs-v4-BCi"/>
+                    <constraint firstItem="YR2-kM-thx" firstAttribute="top" secondItem="faX-ri-sUe" secondAttribute="topMargin" constant="-8" id="d9X-ww-ycx"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="YR2-kM-thx" secondAttribute="bottom" constant="-8" id="j6T-Z9-sVt"/>
+                    <constraint firstItem="BNr-Mf-uD6" firstAttribute="width" secondItem="YR2-kM-thx" secondAttribute="width" id="ktI-jf-23t"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="YR2-kM-thx" secondAttribute="trailing" constant="-8" id="ohp-aS-r3a"/>
+                    <constraint firstItem="YR2-kM-thx" firstAttribute="leading" secondItem="BNr-Mf-uD6" secondAttribute="trailing" id="ryR-0v-TdM"/>
+                    <constraint firstItem="BNr-Mf-uD6" firstAttribute="bottom" secondItem="YR2-kM-thx" secondAttribute="bottom" id="slt-YY-TnX"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="1223" y="433"/>
+            <point key="canvasLocation" x="1223" y="430"/>
         </tableViewCell>
         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="200" id="5yl-XA-YV4">
             <rect key="frame" x="0.0" y="0.0" width="462" height="200"/>

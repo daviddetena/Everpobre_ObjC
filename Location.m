@@ -2,6 +2,7 @@
 #import "Note.h"
 #import "MapSnapshot.h"
 @import AddressBookUI;
+@import CoreLocation;
 
 @interface Location ()
 
@@ -61,5 +62,33 @@
         return loc;
     }
 }
+
+
+
+#pragma mark - MKAnnotation
+
+// The title for the MKAnnotation callout
+-(NSString *) title{
+    return @"I wrote a note here!";
+}
+
+// The subtitle for the MKAnnotation callout
+-(NSString *) subtitle{
+    
+    // We need to merge the \n-separated address into a single string
+    NSArray *lines = [self.address componentsSeparatedByString:@"\n"];
+    NSMutableString *concat = [@"" mutableCopy];
+    
+    for (NSString *line in lines) {
+        [concat appendFormat:@"%@ ", line];
+    }
+    return concat;
+}
+
+// The coordinates for the MKAnnotation
+-(CLLocationCoordinate2D) coordinate{
+    return CLLocationCoordinate2DMake(self.latitudeValue, self.longitudeValue);
+}
+
 
 @end

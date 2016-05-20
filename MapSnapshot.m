@@ -43,17 +43,20 @@
 
 -(void) awakeFromInsert{
     [super awakeFromInsert];
+    // Start observing location. Recalculate snapshot when the location changes
     [self startObserving];
 }
 
 
 -(void) awakeFromFetch{
     [super awakeFromFetch];
+    // Start observing location. Recalculate snapshot when the location changes
     [self startObserving];
 }
 
 -(void) willTurnIntoFault{
     [super willTurnIntoFault];
+    // Stop observing location.
     [self stopObserving];
 }
 

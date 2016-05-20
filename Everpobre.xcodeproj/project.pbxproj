@@ -21,6 +21,9 @@
 		594D4BEB1CEF2B560022F1CE /* _MapSnapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 594D4BE51CEF2B560022F1CE /* _MapSnapshot.m */; };
 		594D4BEC1CEF2B560022F1CE /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 594D4BE71CEF2B560022F1CE /* Location.m */; };
 		594D4BED1CEF2B560022F1CE /* MapSnapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 594D4BE91CEF2B560022F1CE /* MapSnapshot.m */; };
+		594D4BEF1CEF34570022F1CE /* noSnapshot.png in Resources */ = {isa = PBXBuildFile; fileRef = 594D4BEE1CEF34570022F1CE /* noSnapshot.png */; };
+		594D4BF31CEF47CF0022F1CE /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 594D4BF11CEF47CF0022F1CE /* LocationViewController.m */; };
+		594D4BF41CEF47CF0022F1CE /* LocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 594D4BF21CEF47CF0022F1CE /* LocationViewController.xib */; };
 		595842EC1CEDDBFD00B10DB3 /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = 595842E91CEDDBFD00B10DB3 /* location.png */; };
 		595842ED1CEDDBFD00B10DB3 /* location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 595842EA1CEDDBFD00B10DB3 /* location@2x.png */; };
 		595842EE1CEDDBFD00B10DB3 /* location@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 595842EB1CEDDBFD00B10DB3 /* location@3x.png */; };
@@ -72,6 +75,10 @@
 		594D4BE71CEF2B560022F1CE /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = SOURCE_ROOT; };
 		594D4BE81CEF2B560022F1CE /* MapSnapshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapSnapshot.h; sourceTree = SOURCE_ROOT; };
 		594D4BE91CEF2B560022F1CE /* MapSnapshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapSnapshot.m; sourceTree = SOURCE_ROOT; };
+		594D4BEE1CEF34570022F1CE /* noSnapshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noSnapshot.png; sourceTree = "<group>"; };
+		594D4BF01CEF47CF0022F1CE /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
+		594D4BF11CEF47CF0022F1CE /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
+		594D4BF21CEF47CF0022F1CE /* LocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationViewController.xib; sourceTree = "<group>"; };
 		595842E91CEDDBFD00B10DB3 /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location.png; sourceTree = "<group>"; };
 		595842EA1CEDDBFD00B10DB3 /* location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location@2x.png"; sourceTree = "<group>"; };
 		595842EB1CEDDBFD00B10DB3 /* location@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location@3x.png"; sourceTree = "<group>"; };
@@ -193,6 +200,7 @@
 		59838BE11CE1CD5D00A67E5A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				594D4BEE1CEF34570022F1CE /* noSnapshot.png */,
 				595842E91CEDDBFD00B10DB3 /* location.png */,
 				595842EA1CEDDBFD00B10DB3 /* location@2x.png */,
 				595842EB1CEDDBFD00B10DB3 /* location@3x.png */,
@@ -218,6 +226,9 @@
 				5988C2221CEC5BB100B47E2D /* PhotoViewController.h */,
 				5988C2231CEC5BB100B47E2D /* PhotoViewController.m */,
 				5988C2241CEC5BB100B47E2D /* PhotoViewController.xib */,
+				594D4BF01CEF47CF0022F1CE /* LocationViewController.h */,
+				594D4BF11CEF47CF0022F1CE /* LocationViewController.m */,
+				594D4BF21CEF47CF0022F1CE /* LocationViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -349,12 +360,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				594D4BEF1CEF34570022F1CE /* noSnapshot.png in Resources */,
 				5901FD291CEB98E9000D345B /* NoteTableViewController.xib in Resources */,
 				5988C2261CEC5BB100B47E2D /* PhotoViewController.xib in Resources */,
 				59BF64ED1CE0F5A2000F977F /* NoteCollectionCellView.xib in Resources */,
 				59F33A221CCAB1F000CAAA81 /* NotebookCellView.xib in Resources */,
 				595842EE1CEDDBFD00B10DB3 /* location@3x.png in Resources */,
 				595842EC1CEDDBFD00B10DB3 /* location.png in Resources */,
+				594D4BF41CEF47CF0022F1CE /* LocationViewController.xib in Resources */,
 				59838BE31CE1CD6B00A67E5A /* noImage.png in Resources */,
 				5924566F1CC76C4C00C5450B /* Assets.xcassets in Resources */,
 				595842ED1CEDDBFD00B10DB3 /* location@2x.png in Resources */,
@@ -376,6 +389,7 @@
 				594D4BEB1CEF2B560022F1CE /* _MapSnapshot.m in Sources */,
 				59B964711CC841CA00F4F700 /* Notebook.m in Sources */,
 				59B964701CC841CA00F4F700 /* Note.m in Sources */,
+				594D4BF31CEF47CF0022F1CE /* LocationViewController.m in Sources */,
 				594D4BEA1CEF2B560022F1CE /* _Location.m in Sources */,
 				5924567C1CC77B4E00C5450B /* AGTCoreDataStack.m in Sources */,
 				5924566D1CC76C4C00C5450B /* AppDelegate.m in Sources */,
