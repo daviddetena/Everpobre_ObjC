@@ -1,5 +1,6 @@
 #import "Location.h"
 #import "Note.h"
+#import "MapSnapshot.h"
 @import AddressBookUI;
 
 @interface Location ()
@@ -40,7 +41,7 @@
         loc.longitudeValue = location.coordinate.longitude;
         [loc addNotesObject:note];
         
-        // Set address by means of inverse geocoding
+        // Create address by means of inverse geocoding
         CLGeocoder *geocoder = [CLGeocoder new];
         [geocoder reverseGeocodeLocation:location
                        completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
@@ -53,6 +54,10 @@
                                NSLog(@"Address is %@", loc.address);
                            }
                        }];
+        
+        // Create mapSnapshot with this location created
+        loc.mapSnapshot = [MapSnapshot mapSnapshotForLocation:loc];
+        
         return loc;
     }
 }
