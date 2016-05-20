@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LocationViewController">
+            <connections>
+                <outlet property="mapView" destination="fQz-3h-gR1" id="a3M-5V-0Bn"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ka-I6-s17">
+                    <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                    <items>
+                        <barButtonItem title="Standard" id="Iq2-Yl-Wc1">
+                            <connections>
+                                <action selector="displayStandardMap:" destination="-1" id="oTv-FV-ahl"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="3JG-fZ-mEm"/>
+                        <barButtonItem title="Satellite" id="acQ-DM-scQ">
+                            <connections>
+                                <action selector="displaySatelliteMap:" destination="-1" id="AXW-eV-SPh"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="drU-9e-41q"/>
+                        <barButtonItem title="Hybrid" id="8AN-HD-ZgO">
+                            <connections>
+                                <action selector="displayHybridMap:" destination="-1" id="Mnq-2E-C1O"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                </toolbar>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="fQz-3h-gR1">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                </mapView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="fQz-3h-gR1" secondAttribute="trailing" id="0O1-M4-KHL"/>
+                <constraint firstItem="fQz-3h-gR1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Jji-bR-GPN"/>
+                <constraint firstAttribute="trailing" secondItem="3Ka-I6-s17" secondAttribute="trailing" id="RNV-O9-LiR"/>
+                <constraint firstAttribute="bottom" secondItem="3Ka-I6-s17" secondAttribute="bottom" id="irm-jo-vrf"/>
+                <constraint firstItem="3Ka-I6-s17" firstAttribute="top" secondItem="fQz-3h-gR1" secondAttribute="bottom" id="lNA-Nd-gDm"/>
+                <constraint firstItem="3Ka-I6-s17" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="qjF-Wh-kbu"/>
+                <constraint firstItem="fQz-3h-gR1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="tZu-KC-NPK"/>
+                <constraint firstItem="3Ka-I6-s17" firstAttribute="top" secondItem="fQz-3h-gR1" secondAttribute="bottom" id="yfZ-gL-Syp"/>
+            </constraints>
+        </view>
+    </objects>
+</document>
