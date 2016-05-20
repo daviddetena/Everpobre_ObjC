@@ -37,6 +37,10 @@
     request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:NamedEntityAttributes.modificationDate ascending:NO],
                                 [NSSortDescriptor sortDescriptorWithKey:NamedEntityAttributes.name ascending:YES]];
     
+    // Optimize Core Data by fetching a set of results instead of all that match the predicate
+    // A good rule is to fetch aboute twice the elements that are displayed
+    request.fetchBatchSize = 20;
+    
     NSFetchedResultsController *results = [[NSFetchedResultsController alloc] initWithFetchRequest:request
                                                                               managedObjectContext:self.model.context
                                                                                 sectionNameKeyPath:nil

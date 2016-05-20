@@ -97,6 +97,10 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"notebook == %@", [self notebookAtIndexPath:indexPath]];
     req.predicate = predicate;
     
+    // Optimize Core Data by fetching a set of results instead of all that match the predicate
+    // A good rule is to fetch aboute twice the elements that are displayed
+    req.fetchBatchSize = 20;
+    
     // Create fetchedResultsController
     NSFetchedResultsController *fetchedRC = [[NSFetchedResultsController alloc]initWithFetchRequest:req
                                                                                managedObjectContext:self.fetchedResultsController.managedObjectContext sectionNameKeyPath:nil
