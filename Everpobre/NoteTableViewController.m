@@ -30,6 +30,7 @@
 @property (strong, nonatomic) IBOutlet UITableViewCell *nameCell;
 @property (strong, nonatomic) IBOutlet UITableViewCell *photoAndMapCell;
 @property (strong, nonatomic) IBOutlet UITableViewCell *textCell;
+@property (strong, nonatomic) IBOutlet UITableViewCell *deleteNoteCell;
 
 @property (weak, nonatomic) IBOutlet UILabel *modificationDateLabel;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
@@ -67,6 +68,9 @@
 // Model -> View
 -(void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
+    // This will remove extra separators from tableview
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     // Setup navigation bar buttons
     [self setupNavigationButtons];
@@ -112,6 +116,14 @@
 
 // Add two buttons in the navigation bar
 -(void) setupNavigationButtons{
+    
+    // Right button will be "cancel" if it's been created or "activity" otherwise
+    
+    // Add button for sharing note
+    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+                                                                                 target:self
+                                                                                 action:@selector(displayShareController:)];
+    
     // If this is a new note we need an edition mode to cancel (delete) the current note and pops the VC
     if (self.isNew) {
         UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
@@ -119,12 +131,9 @@
                                                                                    action:@selector(cancelNote:)];
         self.navigationItem.rightBarButtonItem = cancelBtn;
     }
-    
-    // Add button for sharing note
-    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
-                                                                                 target:self
-                                                                                 action:@selector(displayShareController:)];
-    self.navigationItem.rightBarButtonItem = shareButton;
+    else{
+        self.navigationItem.rightBarButtonItem = shareButton;
+    }
 }
 
 -(void) setupUIText{
@@ -141,6 +150,25 @@
     self.nameTextField.delegate = self;
 }
 
+// This method presents a modal for confirming the deletion of the current note
+- (void) presentConfirmDeletingAlert{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Delete note?"
+                                                                   message:@"This action can not be undone"
+                                                            preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                           style:UIAlertActionStyleCancel
+                                                         handler:nil];
+    
+    UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:@"Yes, delete"
+                                                     style:UIAlertActionStyleDestructive
+                                                   handler:^(UIAlertAction * _Nonnull action) {
+                                                       [self cancelNote:self];
+                                                   }];;
+    [alert addAction:cancelAction];
+    [alert addAction:deleteAction];
+    [self presentViewController:alert animated:YES completion:nil];
+}
 
 
 -(void) setupUIPhoto{
@@ -318,7 +346,10 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    if (self.isNew){
+        return 4;
+    }
+    return 5;
 }
 
 // Each cell in the xib file has its own size
@@ -326,29 +357,62 @@
     
     if (indexPath.section == 0) {
         
-        switch (indexPath.row) {
-            // Modification date cell
-            case 0:
-                return self.modificationDateCell.frame.size.height;
-                break;
-                
-            // Name cell
-            case 1:
-                return self.nameCell.frame.size.height;
-                break;
-                
-            // Photo & map cell
-            case 2:
-                return self.photoAndMapCell.frame.size.height;
-                break;
-                
-            // Text cell
-            case 3:
-                return self.textCell.frame.size.height;
-                break;
-                
-            default:
-                return 0.0f;
+        if (self.isNew){
+            switch (indexPath.row) {
+                    // Modification date cell
+                case 0:
+                    return self.modificationDateCell.frame.size.height;
+                    break;
+                    
+                    // Name cell
+                case 1:
+                    return self.nameCell.frame.size.height;
+                    break;
+                    
+                    // Photo & map cell
+                case 2:
+                    return self.photoAndMapCell.frame.size.height;
+                    break;
+                    
+                    // Text cell
+                case 3:
+                    return self.textCell.frame.size.height;
+                    break;
+                    
+                default:
+                    return 0.0f;
+            }
+        }
+        else{
+            switch (indexPath.row) {
+                    // Modification date cell
+                case 0:
+                    return self.modificationDateCell.frame.size.height;
+                    break;
+                    
+                    // Name cell
+                case 1:
+                    return self.nameCell.frame.size.height;
+                    break;
+                    
+                    // Photo & map cell
+                case 2:
+                    return self.photoAndMapCell.frame.size.height;
+                    break;
+                    
+                    // Text cell
+                case 3:
+                    return self.textCell.frame.size.height;
+                    break;
+                    
+                    // Delete note cell
+                case 4:
+                    return self.deleteNoteCell.frame.size.height;
+                    break;
+                    
+                default:
+                    return 0.0f;
+            }
         }
     }
     return 30.0f;
@@ -385,6 +449,12 @@
                 cell = self.textCell;
                 break;
                 
+            // Delete note cell
+            case 4:
+                cell = self.deleteNoteCell;
+                break;
+                
+                
             default:
                 break;
         }
@@ -400,7 +470,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSLog(@"Estoy dando en la celda %d", indexPath.row);
+    
+    // If we pressed "delete" we mark as "to be deleted"
+    if (indexPath.row == 4) {
+        [self presentConfirmDeletingAlert];
+        //[self cancelNote:self];
+    }
 }
 
 

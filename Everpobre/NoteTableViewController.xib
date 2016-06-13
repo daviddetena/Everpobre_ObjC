@@ -8,6 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NoteTableViewController">
             <connections>
+                <outlet property="deleteNoteCell" destination="UlH-es-E4r" id="DZv-2k-gKm"/>
                 <outlet property="mapSnapshotView" destination="YR2-kM-thx" id="KpP-wf-C5X"/>
                 <outlet property="modificationDateCell" destination="6UE-8X-1s1" id="w26-i2-brA"/>
                 <outlet property="modificationDateLabel" destination="Qku-iI-VGD" id="RQl-a1-EGc"/>
@@ -53,7 +54,7 @@
                     <constraint firstItem="Qku-iI-VGD" firstAttribute="top" secondItem="6To-Vb-Xea" secondAttribute="top" id="fXm-Yr-FDt"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="1222.5" y="90"/>
+            <point key="canvasLocation" x="1222.5" y="95"/>
         </tableViewCell>
         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="kcf-ls-vMR">
             <rect key="frame" x="0.0" y="0.0" width="462" height="60"/>
@@ -133,6 +134,29 @@
                 </constraints>
             </tableViewCellContentView>
             <point key="canvasLocation" x="1223" y="703"/>
+        </tableViewCell>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="UlH-es-E4r">
+            <rect key="frame" x="0.0" y="0.0" width="463" height="60"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UlH-es-E4r" id="X0f-Wk-V6X">
+                <rect key="frame" x="0.0" y="0.0" width="463" height="59"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Delete note" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MeG-lV-Zf7">
+                        <rect key="frame" x="91" y="10" width="280" height="39"/>
+                        <color key="backgroundColor" red="0.76410256409999999" green="0.0" blue="0.0071533414150000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" red="0.76410256409999999" green="0.0" blue="0.0071533414150000002" alpha="1" colorSpace="calibratedRGB"/>
+                <constraints>
+                    <constraint firstItem="MeG-lV-Zf7" firstAttribute="centerY" secondItem="X0f-Wk-V6X" secondAttribute="centerY" id="EP5-c7-0Ef"/>
+                    <constraint firstItem="MeG-lV-Zf7" firstAttribute="centerX" secondItem="X0f-Wk-V6X" secondAttribute="centerX" id="XvA-3q-d81"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="1222.5" y="902"/>
         </tableViewCell>
     </objects>
 </document>

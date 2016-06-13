@@ -72,6 +72,7 @@ static NSString *cellId = @"NoteCellId";
     return cell;
 }
 
+
 /*
 #pragma mark - UICollectionView Delegate
 -(void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
