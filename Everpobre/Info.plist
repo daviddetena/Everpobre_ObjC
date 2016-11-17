@@ -4,6 +4,10 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Everpobre would like to access your Camera Roll</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Everpobre would like to access your Camera</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -34,9 +38,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    <key>NSLocationAlwaysUsageDescription</key>
-    <string>Everpobre would like to use your location in the background</string>
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>Everpobre would like to use your location</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Everpobre would like to use your location in the background</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Everpobre would like to use your location</string>
 </dict>
 </plist>
