@@ -59,6 +59,12 @@
     cell.nameView.text = nb.name;
     cell.numberOfNotesView.text = [NSString stringWithFormat:@"%lu", nb.notes.count];
     
+    // Set long press gesture recognizer after 1 second
+    UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc]
+                                          initWithTarget:self action:@selector(handleLongPress:)];
+    lpgr.minimumPressDuration = 1.0;
+    [cell addGestureRecognizer:lpgr];
+    
     // Return the cell
     return cell;
 }
@@ -145,6 +151,56 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
     
     // Add Editing button on the left
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
+}
+
+
+-(void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer
+{
+    CGPoint p = [gestureRecognizer locationInView:self.tableView];
+    
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:p];
+    if (indexPath == nil)
+        NSLog(@"Long press on table view but not on a row");
+    else
+    {
+        if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
+            //Do Whatever You want on End of Gesture
+        }
+        else if (gestureRecognizer.state == UIGestureRecognizerStateBegan){
+            // We want the notebook name to be modified with an input in an alert
+            
+            // Get notebook for the row
+            Notebook *notebook = [self notebookAtIndexPath:indexPath];
+            
+            // Create AlertController, incluide an input textfield with notebook name and two actions
+            UIAlertController * alertController = [UIAlertController alertControllerWithTitle: @"Notebook name"
+                                                                                      message: @"Change the name for the notebook"
+                                                                               preferredStyle:UIAlertControllerStyleAlert];
+            
+            [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+                textField.placeholder = @"Notebook name";
+                textField.text = notebook.name;
+                textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+            }];
+            
+            [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel"
+                                                                style:UIAlertActionStyleDestructive
+                                                              handler:nil]];
+            
+            [alertController addAction:[UIAlertAction actionWithTitle:@"Save"
+                                                                style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction *action) {
+                NSArray * textfields = alertController.textFields;
+                UITextField * notebookField = textfields[0];
+                
+                // Set the new name for the notebook
+                notebook.name = notebookField.text;
+            }]];
+            
+            // Present alert
+            [self presentViewController:alertController animated:YES completion:nil];
+        }
+    }
 }
 
 
